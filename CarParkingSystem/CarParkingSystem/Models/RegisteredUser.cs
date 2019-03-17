@@ -17,10 +17,6 @@ namespace CarParkingSystem.Models
         public string Gender { get; set; }
         public string Address { get; set; }
         public string Email { get; set; }
-
-        public int AccountId { get; set; }
-        public virtual Account Account { get; set; }
-
         public DateTime RegistrationDate { get; set; }
 
         public int CarId { get; set; }
@@ -28,7 +24,8 @@ namespace CarParkingSystem.Models
 
         public string UserType { get; set; }
 
-
         public virtual ICollection<Account> Accounts { get; set; }
+
+
     }
 }

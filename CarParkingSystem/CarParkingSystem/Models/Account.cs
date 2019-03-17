@@ -11,14 +11,11 @@ namespace CarParkingSystem.Models
         [Key]
         public int Id { get; set; }
 
-        public int RUserId { get; set; }
+        public int RUId { get; set; }
         public virtual RegisteredUser RegisteredUser { get; set; }
 
         public DateTime DepositeTime { get; set; }
         public double DepositedAmount { get; set; }
         public double Balance { get; set; }
-
-
-        public virtual ICollection<RegisteredUser> RegisteredUsers { get; set; }
     }
 }

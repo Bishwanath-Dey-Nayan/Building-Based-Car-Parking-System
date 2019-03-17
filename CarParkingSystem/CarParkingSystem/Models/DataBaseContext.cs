@@ -13,6 +13,16 @@ namespace CarParkingSystem.Models
 
         }
 
+
+        public DbSet<ParkingSpace> parkingSpace { get; set; }
+        public DbSet<Car> Cars { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<CheckIn> CheckIns { get; set; }
+        public DbSet<CheckOut> CheckOuts { get; set; }
+        public DbSet<Bill> Bills { get; set; }
+        public DbSet<RegisteredUser> RegisteredUsers { get; set; }
+        public DbSet<Account> Accounts { get; set; }
+
         
     }
 }
