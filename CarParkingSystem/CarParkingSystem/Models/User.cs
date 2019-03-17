@@ -14,6 +14,8 @@ namespace CarParkingSystem.Models
         public string Name { get; set; }
         public string Contact { get; set; }
         public string Address { get; set; }
+
         public int CarId { get; set; }
+        public virtual Car Car { get; set; }
     }
 }

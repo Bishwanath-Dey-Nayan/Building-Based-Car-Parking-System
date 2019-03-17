@@ -14,5 +14,10 @@ namespace CarParkingSystem.Models
         public string Floor { get; set; }
         public double Cost { get; set; }
         public bool Status { get; set; }
+
+
+        public virtual ICollection<Bill> Bills { get; set; }
+        public virtual ICollection<CheckIn> Checkins { get; set; }
+
     }
 }
