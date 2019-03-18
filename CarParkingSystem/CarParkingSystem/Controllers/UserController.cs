@@ -10,6 +10,7 @@ namespace CarParkingSystem.Controllers
 {
     public class UserController : Controller
     {
+        private DataBaseContext db = new DataBaseContext();
         // GET: Registration
         public ActionResult Registration()
         {
@@ -23,6 +24,7 @@ namespace CarParkingSystem.Controllers
 
         public ActionResult Registration(RegistrationVM user)
         {
+
             bool status=false;
             string message="";
             //validate Antiforgery token
@@ -33,18 +35,63 @@ namespace CarParkingSystem.Controllers
                     if (isExists)
                     {
                         ModelState.AddModelError("EmailExits","Email already Exists");
-                    }
-                    else
-                    {
                         return View(user);
                     }
+          
 
                 #endregion
 
                 #region
-                    //Hashing Password
-
+                //Hashing Password
+                user.Password = Crypto.Hash(user.Password);
+                user.ConfirmPassWord = Crypto.Hash(user.ConfirmPassWord);
                 #endregion
+
+                
+                
+
+                
+
+                using(DataBaseContext db=new DataBaseContext())
+                {
+
+                    
+                    Car c = new Car()
+                    {
+                        CarNo=user.CarNo,
+                        CarName=user.CarName,
+                        LicenseNo=user.LicenseNo
+                    };
+                    db.Cars.Add(c);
+                    db.SaveChanges();
+
+                    RegisteredUser ru = new RegisteredUser() {
+                    
+                        Name=user.Name,
+                        Contact=user.Contact,
+                        DOB=user.DOB,
+                        Address=user.Address,
+                        Email=user.Email,
+                        RegistrationDate=DateTime.Now.Date,
+                        UserType="U",
+                        Password=user.Password,
+                        CarId=c.Id,
+                        
+                     
+                    };
+                    db.RegisteredUsers.Add(ru);
+                    db.SaveChanges();
+
+                    Account ac = new Account() {
+                        RUId = ru.Id,
+                        DepositeTime = DateTime.Now.Date,
+                        DepositedAmount=user.Deposite
+
+                    };
+                    db.Accounts.Add(ac);
+                    db.SaveChanges();
+
+                }
 
 
             }
@@ -71,6 +118,24 @@ namespace CarParkingSystem.Controllers
             }
                 
 
+        }
+
+
+        //method for creating usercode in a specific pattern
+        [NonAction]
+        public string usercode()
+        {
+            string code="";
+            var lastUser = db.RegisteredUsers.OrderByDescending(s => s.Id).FirstOrDefault();
+            if(lastUser==null)
+            {
+               code = "RU001";
+            }
+            else
+            {
+                code = "RU0"+((Convert.ToInt32(lastUser.Id))+1).ToString();
+            }
+            return code;
         }
     }
 }
