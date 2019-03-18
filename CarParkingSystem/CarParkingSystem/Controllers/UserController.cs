@@ -47,10 +47,10 @@ namespace CarParkingSystem.Controllers
                 user.ConfirmPassWord = Crypto.Hash(user.ConfirmPassWord);
                 #endregion
 
-                
-                
 
-                
+
+
+                string code = usercode();
 
                 using(DataBaseContext db=new DataBaseContext())
                 {
@@ -76,6 +76,7 @@ namespace CarParkingSystem.Controllers
                         UserType="U",
                         Password=user.Password,
                         CarId=c.Id,
+                        UserCode=code
                         
                      
                     };
@@ -91,6 +92,9 @@ namespace CarParkingSystem.Controllers
                     db.Accounts.Add(ac);
                     db.SaveChanges();
 
+                    status = true;
+                    message = "RegisTration Successfull";
+
                 }
 
 
@@ -100,9 +104,10 @@ namespace CarParkingSystem.Controllers
                 message = "Invalid Request";
             }
 
-           
 
-            //
+
+            ViewBag.Message = message;
+            ViewBag.Status = status;
             return View(user);
         }
 
