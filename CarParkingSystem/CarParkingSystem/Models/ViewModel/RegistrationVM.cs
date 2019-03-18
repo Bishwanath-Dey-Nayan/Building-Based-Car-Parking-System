@@ -44,6 +44,18 @@ namespace CarParkingSystem.Models.ViewModel
         [Display(Name="License Number.")]
         [Required(AllowEmptyStrings =false,ErrorMessage ="License Number required.")]
         public string LicenseNo { get; set; }
+
+        [Display(Name="Password")]
+        [Required(AllowEmptyStrings =false,ErrorMessage ="Password Required.")]
+        [DataType(DataType.Password)]
+        [MinLength(7,ErrorMessage ="At least Seven Characters needed.")]
+        public string Password { get; set; }
+
+
+        [Display(Name="Confirm PassWord.")]
+        [Required(AllowEmptyStrings =false,ErrorMessage ="Confirm Password Required.")]
+        [Compare("Password",ErrorMessage ="Confirm Password does not match with the Password.")]
+        public string ConfirmPassWord { get; set; }
         
         
     }

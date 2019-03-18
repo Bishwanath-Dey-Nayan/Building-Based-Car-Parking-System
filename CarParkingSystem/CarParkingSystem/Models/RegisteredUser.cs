@@ -23,6 +23,7 @@ namespace CarParkingSystem.Models
         public virtual Car Car { get; set; }
 
         public string UserType { get; set; }
+        public string Password { get; set; }
 
         public virtual ICollection<Account> Accounts { get; set; }
 
