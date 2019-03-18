@@ -12,8 +12,8 @@ namespace CarParkingSystem.Models.ViewModel
         [Display(Name="Client Name")]
         public string Name { get; set; }
 
-        [Required]
-        
+        [Required(AllowEmptyStrings =false,ErrorMessage ="Contact Number Required.")]
+        [Display(Name="Contact Number")]
         public string Contact { get; set; }
 
         [Required]
@@ -44,6 +44,10 @@ namespace CarParkingSystem.Models.ViewModel
         [Display(Name="License Number.")]
         [Required(AllowEmptyStrings =false,ErrorMessage ="License Number required.")]
         public string LicenseNo { get; set; }
+
+        [Display(Name="Deposite Amount")]
+        [Required(AllowEmptyStrings =false,ErrorMessage ="Please Depostie the amount.")]
+        public double Deposite { get; set; }
 
         [Display(Name="Password")]
         [Required(AllowEmptyStrings =false,ErrorMessage ="Password Required.")]
