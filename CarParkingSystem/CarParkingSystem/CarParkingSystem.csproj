@@ -160,6 +160,7 @@
     <Compile Include="Models\ParkingSpace.cs" />
     <Compile Include="Models\RegisteredUser.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\ViewModel\LoginVM.cs" />
     <Compile Include="Models\ViewModel\RegistrationVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
