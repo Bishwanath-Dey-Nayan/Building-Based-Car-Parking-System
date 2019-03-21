@@ -1,0 +1,38 @@
+﻿@model IEnumerable<CarParkingSystem.Models.RegisteredUser>
+
+@Html.ActionLink("Create New","Registration","User")
+<div class="info"><h1 align="center">Registered User List</h1></div><br /><br/>
+
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Contact</th>
+        <th>Date of Birth</th>
+        <th>Address</th>
+        <th>Email</th>
+        <th>Car No</th>
+        <th>Registration Date</th>
+        <th>User Type</th>
+    </tr>
+
+
+
+    @foreach(var item in Model)
+    {
+    <tr>
+        <td>@item.Name</td>
+        <td>@item.Contact</td>
+        <td>@item.DOB</td>
+        <td>@item.Address</td>
+        <td>@item.Email</td>
+        <td>@item.Car.CarNo</td>
+        <td>@item.RegistrationDate</td>
+        @if (item.UserType == "U")
+        {
+            <td>User</td>
+        }
+        else { <td>Admin</td>
+        }</tr>
+    }
+</table>
+

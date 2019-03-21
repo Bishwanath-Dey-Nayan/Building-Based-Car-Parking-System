@@ -202,5 +202,18 @@ namespace CarParkingSystem.Controllers
             FormsAuthentication.SignOut();
             return RedirectToAction("Login","User");
         }
+
+
+
+        public ActionResult Index()
+        {
+            var list = db.RegisteredUsers.ToList();
+            return View(list);
+        }
+        public ActionResult Index1()
+        {
+            var list = db.RegisteredUsers.ToList();
+            return View(list);
+        }
     }
 }
