@@ -5,7 +5,8 @@
 {
     using (Html.BeginForm("Logout", "User", FormMethod.Post, new { id = "logoutForm" }))
     {
-        <a href="../../User/Logout">Logout</a>
+        @*<a href="../../User/Logout">Logout</a>*@
+        <a href="javascript:document.getElementById('logoutForm').submit()">Logout</a>
     }
 }
 
