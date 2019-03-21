@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace CarParkingSystem.Controllers
 {
@@ -141,6 +142,65 @@ namespace CarParkingSystem.Controllers
                 code = "RU0"+((Convert.ToInt32(lastUser.Id))+1).ToString();
             }
             return code;
+        }
+
+        //get method for login 
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+       //Post method for login
+       [HttpPost]
+        public ActionResult Login(LoginVM log,string ReturnUrl)
+        {
+            string message = "";
+            if(ModelState.IsValid)
+            {
+                var l = db.RegisteredUsers.Where(t => t.Email == log.Email).FirstOrDefault();
+                if(l!=null)
+                {
+                    if(string.Compare(Crypto.Hash(log.Password),l.Password)==0)
+                    {
+                        int timeout = log.Remember ? 525600 : 10;
+                        var ticket = new FormsAuthenticationTicket(log.Email,log.Remember,timeout);
+                        string enc = FormsAuthentication.Encrypt(ticket);
+                        var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, enc);
+                        cookie.Expires = DateTime.Now.AddMinutes(timeout);
+                        cookie.HttpOnly = true;
+                        Response.Cookies.Add(cookie);
+
+                        if(Url.IsLocalUrl(ReturnUrl))
+                        {
+                            return Redirect(ReturnUrl);
+                        }
+                        else
+                        {
+                            return RedirectToAction("Index", "Home");
+                        }
+
+                    }
+                    else
+                    {
+                        message = "Invalid Credentials.Check wheather the Id or password is correctly written.";
+
+                    }
+                }
+                else
+                {
+                    message = "Invalid Credentials.Check wheather the Id or password is correctly written.";
+                }
+            }
+            ViewBag.Message = message;
+            return View(log);
+        }
+
+        //method for logout
+        [Authorize]
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Login","User");
         }
     }
 }
