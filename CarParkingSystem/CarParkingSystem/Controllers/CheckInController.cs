@@ -59,6 +59,12 @@ namespace CarParkingSystem.Controllers
             return View();
         }
 
+        //action for showing the current checkin user
+        public ActionResult Index()
+        {
+            return View(db.CheckIns.ToList());
+        }
+
 
         //generation Random OTP for the Car CheckIn
         public string GetToken()

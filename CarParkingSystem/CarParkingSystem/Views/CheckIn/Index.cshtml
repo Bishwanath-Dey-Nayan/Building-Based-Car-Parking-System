@@ -1,0 +1,54 @@
+﻿@model IEnumerable<CarParkingSystem.Models.CheckIn>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<table class="table">
+    <tr>
+        <th>
+            Token No
+        </th>
+        <th>
+            CheckIn Time
+        </th>
+        <th>
+            Space Name
+        </th>
+        <th>
+            Car No
+        </th>
+        <th>
+            User Code
+        </th>
+        <th>
+            Action
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TokenNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CheckInTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ParkingSpace.PSName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Car.CarNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserCode)
+        </td>
+        <td>
+           <a href="../../CheckOut/CheckOut?id=@item.Id&SId=@item.PSpaceId&UsrCode=@item.UserCode" class="btn btn-primary">Check Out</a>
+        </td>
+    </tr>
+}
+
+</table>
