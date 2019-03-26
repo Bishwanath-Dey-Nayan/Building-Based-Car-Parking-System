@@ -1,0 +1,45 @@
+﻿@model IEnumerable<CarParkingSystem.Models.ViewModel.ParkingSpaceList>
+@{
+    ViewBag.Title = "CheckIn";
+}
+
+
+<ul>
+    @{
+        int i = 0;
+        foreach (var item in Model)
+        {
+            if (i < 5)
+            {
+                if (item.Status == true)
+                {
+                <a href="../../CheckIn/CheckInFinal?SId=@item.Id" class="btn btn-primary">@item.Name</a>
+                    i++;
+                }
+                else
+                {
+                    <a href="#" class="btn btn-danger">@item.Name</a>
+                    i++;
+                }
+            }
+            else
+            {
+                if (item.Status == true)
+                {
+                <br /> 
+                <a href="../../CheckIn/CheckInFinal?SId=@item.Id" class="btn btn-primary">@item.Name</a>
+                    i = 1;
+                }
+                else
+                {
+                    <br />
+                    <a href="#" class="btn btn-danger">@item.Name</a>
+                    i = 1;
+                }
+            }
+
+        }
+        }
+</ul>
+
+

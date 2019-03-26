@@ -132,6 +132,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CheckInController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Crypto.cs" />
@@ -160,7 +161,9 @@
     <Compile Include="Models\ParkingSpace.cs" />
     <Compile Include="Models\RegisteredUser.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\ViewModel\CheckInVM.cs" />
     <Compile Include="Models\ViewModel\LoginVM.cs" />
+    <Compile Include="Models\ViewModel\ParkingSpaceList.cs" />
     <Compile Include="Models\ViewModel\RegistrationVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -202,8 +205,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\User\Registration.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
-    <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\Index1.cshtml" />
+    <Content Include="Views\CheckIn\CheckIn.cshtml" />
+    <Content Include="Views\CheckIn\CheckInFinal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

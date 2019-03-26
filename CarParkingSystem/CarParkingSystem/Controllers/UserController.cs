@@ -203,13 +203,7 @@ namespace CarParkingSystem.Controllers
             return RedirectToAction("Login","User");
         }
 
-
-
-        public ActionResult Index()
-        {
-            var list = db.RegisteredUsers.ToList();
-            return View(list);
-        }
+        //method for showing the list of registered User
         public ActionResult Index1()
         {
             var list = db.RegisteredUsers.ToList();

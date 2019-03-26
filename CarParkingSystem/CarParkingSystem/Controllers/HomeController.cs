@@ -7,7 +7,7 @@ using System.Web.Mvc;
 namespace CarParkingSystem.Controllers
 {
     public class HomeController : Controller
-    {
+    { 
         [Authorize]
         public ActionResult Index()
         {

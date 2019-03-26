@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<CarParkingSystem.Models.RegisteredUser>
 
-@Html.ActionLink("Create New","Registration","User")
+
 <div class="info"><h1 align="center">Registered User List</h1></div><br /><br/>
 
 <table class="table">
@@ -13,6 +13,7 @@
         <th>Car No</th>
         <th>Registration Date</th>
         <th>User Type</th>
+        <th>Action</th>
     </tr>
 
 
@@ -27,12 +28,18 @@
         <td>@item.Email</td>
         <td>@item.Car.CarNo</td>
         <td>@item.RegistrationDate</td>
+
         @if (item.UserType == "U")
         {
             <td>User</td>
         }
-        else { <td>Admin</td>
-        }</tr>
+        else
+        { 
+            <td>Admin</td>
+        }
+        <td><a href="../../CheckIn/CheckIn?RUid=@item.Id">Check In</a></td> @* Passing the Userid to the Checkin action for query*@   
+    
+    </tr>
     }
 </table>
 

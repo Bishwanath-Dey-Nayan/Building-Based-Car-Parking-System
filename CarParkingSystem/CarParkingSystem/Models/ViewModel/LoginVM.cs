@@ -15,9 +15,10 @@ namespace CarParkingSystem.Models.ViewModel
 
         [Display(Name ="Password")]
         [Required(AllowEmptyStrings =false,ErrorMessage ="Please Enter the password.")]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        [Display(Name ="Remember Me?")]
+        [Display(Name ="Remember Me?")] 
         public bool Remember { get; set; }
     }
 }
