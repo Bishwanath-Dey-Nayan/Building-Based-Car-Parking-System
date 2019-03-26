@@ -48,7 +48,8 @@ namespace CarParkingSystem.Controllers
                 PSpaceId=ParkingSpace.Id,
                 UserCode=RegisteredUser.UserCode,
                 CarId=RegisteredUser.CarId,
-                TokenNo=Token
+                TokenNo=Token,
+                status=true
                 
             };
             db.CheckIns.Add(ci);
@@ -62,6 +63,7 @@ namespace CarParkingSystem.Controllers
         //action for showing the current checkin user
         public ActionResult Index()
         {
+            
             return View(db.CheckIns.ToList());
         }
 

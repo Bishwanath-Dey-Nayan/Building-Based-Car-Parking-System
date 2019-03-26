@@ -29,6 +29,8 @@
     </tr>
 
 @foreach (var item in Model) {
+    if (item.status == true)
+    {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.TokenNo)
@@ -49,6 +51,7 @@
            <a href="../../CheckOut/CheckOut?id=@item.Id&SId=@item.PSpaceId&UsrCode=@item.UserCode" class="btn btn-primary">Check Out</a>
         </td>
     </tr>
+    }
 }
 
 </table>

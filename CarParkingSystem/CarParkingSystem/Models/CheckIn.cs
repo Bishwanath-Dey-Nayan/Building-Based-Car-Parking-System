@@ -21,6 +21,7 @@ namespace CarParkingSystem.Models
         public int CarId { get; set; }
         public virtual Car Car { get; set; }
 
+        public bool status { get; set; }
 
         public virtual ICollection<Bill> Bills { get; set; }
         public virtual ICollection<CheckOut> Checkouts { get; set; }

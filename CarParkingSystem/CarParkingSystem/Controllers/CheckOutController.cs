@@ -14,14 +14,14 @@ namespace CarParkingSystem.Controllers
         public ActionResult CheckOut(int? id,int?SId,string UsrCode)
         {
 
-
-            var CheckOutUsr = db.RegisteredUsers.Where(t => t.UserCode == UsrCode).FirstOrDefault();
+           var CheckOutUsr = db.RegisteredUsers.Where(t => t.UserCode == UsrCode).FirstOrDefault();
             var carid = CheckOutUsr.CarId;
             //deallocate the parking Space
             var del = db.parkingSpace.Where(t => t.Id == SId).FirstOrDefault();
             del.Status = true;
             db.SaveChanges();
 
+            //saving the data to the Checkout model
             CheckOut c = new CheckOut()
             {
                 CheckInId = Convert.ToInt32(id),
@@ -31,7 +31,11 @@ namespace CarParkingSystem.Controllers
             };
             db.CheckOuts.Add(c);
             db.SaveChanges();
-            
+            //deleting the record form the checkin
+            var delcheckin = db.CheckIns.Where(t => t.Id == id).FirstOrDefault();
+            delcheckin.status = false;
+            db.SaveChanges();
+
             return View();
         }
     }

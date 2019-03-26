@@ -1,8 +1,25 @@
 ﻿
 @{
-    ViewBag.Title = "CheckInFinal";
+    ViewBag.Title = "CheckIn";
 }
 
-<h2>CheckInFinal</h2>
-@ViewBag.Token
+<div class="container col-lg-offset-4" id="PrintArea">
+<h1>City Center Car Parking System</h1>
+  <h3 style="color:red">Token NO: @ViewBag.Token</h3>
+</div>
+<button style="align-self:center" onclick="printdiv('PrintArea')">Print</button>
+
+
+<script>
+    function printDiv(divName) {
+        var printContents = document.getElementById(divName).innerHTML;
+        var originalContents = document.body.innerHTML;
+
+        document.body.innerHTML = printContents;
+
+        window.print();
+
+        document.body.innerHTML = originalContents;
+    }
+</script>
 
