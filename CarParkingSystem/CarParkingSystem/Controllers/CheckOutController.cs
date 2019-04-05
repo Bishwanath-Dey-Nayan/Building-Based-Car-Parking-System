@@ -81,13 +81,17 @@ namespace CarParkingSystem.Controllers
             var UserExists = db.RegisteredUsers.Where(registereduser => registereduser.UserCode == UserSearchData).FirstOrDefault();
             if(UserExists!=null)
             {
-                Discount = 10;   
+                Discount = 10;
+                int UserId = UserExists.Id;
                 //if the user is regitered then we will provide him 10% discount
                 Bill = (TotalHour * 50) - (((TotalHour * 50) * 10) / 100);
 
                 //Updating the account of the Registered User
-                UpdateAccount(Bill);
-                
+                if (!UpdateAccount(Bill, UserId))
+                {
+                    return View("Error");
+                }
+
             }
             else
             {
@@ -117,7 +121,7 @@ namespace CarParkingSystem.Controllers
             //holding the billId to the tempdata
             TempData["BillId"] = bill.Id;
 
-            TempData["UserId"] = UserExists.Id;
+           
 
             return RedirectToAction("ShowBill" , "CheckOut"); 
         }
@@ -134,29 +138,32 @@ namespace CarParkingSystem.Controllers
 
         //Updating the account of the Registered User
         [NonAction]
-        public void UpdateAccount(double bill)
+        public bool UpdateAccount(double bill, int UserId)
         {
-            int RegisteredUserId = Convert.ToInt32(TempData["UserId"]);
-            var account = db.Accounts.Where(accounts => accounts.RUId == RegisteredUserId).Last();
-            double BalanceAmount = account.DepositedAmount - bill;
+
+            var account = db.Accounts.Where(accounts => accounts.RUId == UserId).OrderByDescending(o => o.RUId).First();
+            double BalanceAmount = account.Balance - bill;
 
             //Saving the data to the account table
             if (bill < account.Balance)
             {
                 Account accountentry = new Account()
                 {
-                    RUId = RegisteredUserId,
-                    DepositedAmount = account.Balance,
+                    RUId = UserId,
+                    DepositedAmount = account.DepositedAmount,
                     Cost = bill,
-                    Balance = BalanceAmount
+                    Balance = BalanceAmount,
+                    DepositeTime=account.DepositeTime
 
                 };
                 db.Accounts.Add(accountentry);
                 db.SaveChanges();
+                return true;
             }
             else
             {
-                message = "Recharge Your Account";
+                message = "Recharge your account";
+                return false;
             }
 
         }
