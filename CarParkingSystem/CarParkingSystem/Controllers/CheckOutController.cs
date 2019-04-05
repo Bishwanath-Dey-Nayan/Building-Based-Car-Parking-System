@@ -109,7 +109,22 @@ namespace CarParkingSystem.Controllers
             db.Bills.Add(bill);
             db.SaveChanges();
 
-            return RedirectToAction("", ""); 
+            //holding the billId to the tempdata
+            TempData["BillId"] = bill.Id;
+
+            return RedirectToAction("" , ""); 
         }
+
+        public ActionResult ShowBill()
+        {
+            int BillId = Convert.ToInt32(TempData["BillId"]);
+
+            //Fetch the Bill Info of the Specific BillId
+            var bill = db.Bills.Where(bills => bills.Id == BillId).FirstOrDefault();
+
+            return View(bill);
+        }
+
+
     }
 }
