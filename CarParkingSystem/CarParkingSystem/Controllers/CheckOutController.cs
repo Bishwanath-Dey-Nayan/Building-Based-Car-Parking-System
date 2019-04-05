@@ -36,7 +36,80 @@ namespace CarParkingSystem.Controllers
             delcheckin.status = false;
             db.SaveChanges();
 
-            return View();
+            //sending data to the Bill method using tempdata
+            TempData["CheckOutId"] = c.Id;
+
+            //Redirecting to the Bill action method
+            //to generate the bill after the checkOut
+            return RedirectToAction("Bill","CheckOut");
+        }
+
+        public ActionResult Bill()
+        {
+            double Bill = 0;
+            int Discount;
+            //initializing the CheckOutSearchData with TempData["CheckOutId"] for quering the CheckOut Table Value
+            int CheckOutSearchData = Convert.ToInt32(TempData["CheckOutId"]);
+
+            //Finding Out the Specific CheckOut
+            var CheckOutData = db.CheckOuts.Where(checkout => checkout.Id == CheckOutSearchData).FirstOrDefault();
+            DateTime CheckOutTime = CheckOutData.CheckOutTime;
+            var UserSearchData = CheckOutData.UserCode;
+
+            //Initializing CheckIn Id
+            int CheckInSearchData = CheckOutData.CheckInId;
+
+            //finding the CheckIn for the Current CheckOut
+            var CheckInData = db.CheckIns.Where(checkin => checkin.Id == CheckInSearchData).FirstOrDefault();
+            DateTime CheckInTime = CheckInData.CheckInTime;
+
+            //Finding Out the total Parked Hour
+            //and checking the condition of minimum time
+            TimeSpan Span = CheckOutTime.Subtract(CheckInTime);
+            double TotalHour = Span.Hours;
+            if(TotalHour<1 && TotalHour>.8)
+            {
+                TotalHour = 1;
+            }
+            else if(TotalHour>.4)
+            {
+                TotalHour = .5;
+            }
+
+            //checking wherther the user is registered or not
+            var UserExists = db.RegisteredUsers.Where(registereduser => registereduser.UserCode == UserSearchData).FirstOrDefault();
+            if(UserExists!=null)
+            {
+                Discount = 10;   
+                //if the user is regitered then we will provide him 10% discount
+                Bill = ((TotalHour * 50) * 10) / 100;
+            }
+            else
+            {
+                Discount = 0;
+                Bill = (TotalHour * 50);
+            }
+
+            //Save the Data to the Bill Table
+            Bill bill = new Bill()
+            {
+                CheckInId = CheckInData.Id,
+                CheckOutId = CheckOutData.Id,
+                //User searchData holds the UserCode
+                UserCode = UserSearchData,
+                CarId = UserExists.CarId,
+                SpaceId = CheckInData.PSpaceId,
+                TotalHour = TotalHour,
+                Total = Bill,
+                Discount=Discount
+
+            };
+
+            //Saving the data to the Bill table
+            db.Bills.Add(bill);
+            db.SaveChanges();
+
+            return RedirectToAction("", ""); 
         }
     }
 }

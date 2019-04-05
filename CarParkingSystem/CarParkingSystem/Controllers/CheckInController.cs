@@ -52,6 +52,7 @@ namespace CarParkingSystem.Controllers
                 status=true
                 
             };
+
             db.CheckIns.Add(ci);
             db.SaveChanges();
 
