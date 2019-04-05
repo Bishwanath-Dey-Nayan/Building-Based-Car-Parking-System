@@ -156,6 +156,10 @@
     <Compile Include="Migrations\201903261935556_checkinmodelUpdate.Designer.cs">
       <DependentUpon>201903261935556_checkinmodelUpdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904051021423_CostFieldAddedToAccountTable.cs" />
+    <Compile Include="Migrations\201904051021423_CostFieldAddedToAccountTable.Designer.cs">
+      <DependentUpon>201904051021423_CostFieldAddedToAccountTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Bill.cs" />
@@ -244,6 +248,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903261935556_checkinmodelUpdate.resx">
       <DependentUpon>201903261935556_checkinmodelUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904051021423_CostFieldAddedToAccountTable.resx">
+      <DependentUpon>201904051021423_CostFieldAddedToAccountTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

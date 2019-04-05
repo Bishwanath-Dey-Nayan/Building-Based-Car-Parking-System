@@ -16,6 +16,7 @@ namespace CarParkingSystem.Models
 
         public DateTime DepositeTime { get; set; }
         public double DepositedAmount { get; set; }
+        public double Cost { get; set; }
         public double Balance { get; set; }
     }
 }

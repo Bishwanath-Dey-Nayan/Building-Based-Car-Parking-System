@@ -171,3 +171,4 @@ G:\Building Based Car Parking System\Building-Based-Car-Parking-System\CarParkin
 G:\Building Based Car Parking System\Building-Based-Car-Parking-System\CarParkingSystem\CarParkingSystem\obj\Debug\CarParkingSystem.csprojAssemblyReference.cache
 G:\Building Based Car Parking System\Building-Based-Car-Parking-System\CarParkingSystem\CarParkingSystem\obj\Debug\CarParkingSystem.Migrations.passwordFieldAddedToRegisteredUserModel.resources
 G:\Building Based Car Parking System\Building-Based-Car-Parking-System\CarParkingSystem\CarParkingSystem\obj\Debug\CarParkingSystem.Migrations.checkinmodelUpdate.resources
+G:\Building Based Car Parking System\Building-Based-Car-Parking-System\CarParkingSystem\CarParkingSystem\obj\Debug\CarParkingSystem.Migrations.CostFieldAddedToAccountTable.resources

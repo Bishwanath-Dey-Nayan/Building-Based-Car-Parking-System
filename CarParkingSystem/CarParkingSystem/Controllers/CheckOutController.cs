@@ -66,12 +66,12 @@ namespace CarParkingSystem.Controllers
             //Finding Out the total Parked Hour
             //and checking the condition of minimum time
             TimeSpan Span = CheckOutTime.Subtract(CheckInTime);
-            double TotalHour = Span.Hours;
+            double TotalHour = Span.TotalHours;
             if(TotalHour<1 && TotalHour>.8)
             {
                 TotalHour = 1;
             }
-            else if(TotalHour>.4)
+            else if(TotalHour<.4 && TotalHour>.1)
             {
                 TotalHour = .5;
             }
@@ -82,7 +82,7 @@ namespace CarParkingSystem.Controllers
             {
                 Discount = 10;   
                 //if the user is regitered then we will provide him 10% discount
-                Bill = ((TotalHour * 50) * 10) / 100;
+                Bill = (TotalHour * 50) - (((TotalHour * 50) * 10) / 100);
             }
             else
             {
@@ -112,7 +112,7 @@ namespace CarParkingSystem.Controllers
             //holding the billId to the tempdata
             TempData["BillId"] = bill.Id;
 
-            return RedirectToAction("" , ""); 
+            return RedirectToAction("ShowBill" , "CheckOut"); 
         }
 
         public ActionResult ShowBill()
