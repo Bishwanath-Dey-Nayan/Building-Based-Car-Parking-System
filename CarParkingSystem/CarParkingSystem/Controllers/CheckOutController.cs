@@ -9,6 +9,7 @@ namespace CarParkingSystem.Controllers
 {
     public class CheckOutController : Controller
     {
+        string message = "";
         private CarParkingSystem.Models.DataBaseContext db = new Models.DataBaseContext();
         // GET: CheckOut
         public ActionResult CheckOut(int? id,int?SId,string UsrCode)
@@ -83,6 +84,10 @@ namespace CarParkingSystem.Controllers
                 Discount = 10;   
                 //if the user is regitered then we will provide him 10% discount
                 Bill = (TotalHour * 50) - (((TotalHour * 50) * 10) / 100);
+
+                //Updating the account of the Registered User
+                UpdateAccount(Bill);
+                
             }
             else
             {
@@ -112,6 +117,8 @@ namespace CarParkingSystem.Controllers
             //holding the billId to the tempdata
             TempData["BillId"] = bill.Id;
 
+            TempData["UserId"] = UserExists.Id;
+
             return RedirectToAction("ShowBill" , "CheckOut"); 
         }
 
@@ -123,6 +130,35 @@ namespace CarParkingSystem.Controllers
             var bill = db.Bills.Where(bills => bills.Id == BillId).FirstOrDefault();
 
             return View(bill);
+        }
+
+        //Updating the account of the Registered User
+        [NonAction]
+        public void UpdateAccount(double bill)
+        {
+            int RegisteredUserId = Convert.ToInt32(TempData["UserId"]);
+            var account = db.Accounts.Where(accounts => accounts.RUId == RegisteredUserId).Last();
+            double BalanceAmount = account.DepositedAmount - bill;
+
+            //Saving the data to the account table
+            if (bill < account.Balance)
+            {
+                Account accountentry = new Account()
+                {
+                    RUId = RegisteredUserId,
+                    DepositedAmount = account.Balance,
+                    Cost = bill,
+                    Balance = BalanceAmount
+
+                };
+                db.Accounts.Add(accountentry);
+                db.SaveChanges();
+            }
+            else
+            {
+                message = "Recharge Your Account";
+            }
+
         }
 
 
