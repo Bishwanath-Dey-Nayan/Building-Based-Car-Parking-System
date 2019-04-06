@@ -141,7 +141,8 @@ namespace CarParkingSystem.Controllers
         public bool UpdateAccount(double bill, int UserId)
         {
 
-            var account = db.Accounts.Where(accounts => accounts.RUId == UserId).OrderByDescending(o => o.RUId).First();
+            var accountlist = db.Accounts.Where(accounts => accounts.RUId == UserId).ToList();
+            var account = accountlist.Last();
             double BalanceAmount = account.Balance - bill;
 
             //Saving the data to the account table
