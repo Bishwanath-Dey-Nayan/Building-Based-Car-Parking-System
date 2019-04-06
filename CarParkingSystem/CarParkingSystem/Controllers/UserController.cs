@@ -113,7 +113,11 @@ namespace CarParkingSystem.Controllers
         }
 
         //General User Registration Process
-        
+        //Get method
+        public ActionResult GeneralUserRegistration()
+        {
+            return View();
+        }
 
 
         //method for checking Email Exists or not
