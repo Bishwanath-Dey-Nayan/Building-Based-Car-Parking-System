@@ -1,7 +1,21 @@
 ﻿@model IEnumerable<CarParkingSystem.Models.RegisteredUser>
 
-
+    
 <div class="info"><h1 align="center">Registered User List</h1></div><br /><br/>
+<div class="col-md-offset-4">
+<p>
+    @{ using (Html.BeginForm("Index1","User",FormMethod.Get))
+        {
+            <label>Search By UserCode:</label>
+            @Html.TextBox("Search")
+            <input type="submit" value="Search" />
+        }
+
+    }
+</p>
+</div>
+<br />
+<br />
 
 <table class="table">
     <tr>

@@ -274,10 +274,11 @@ namespace CarParkingSystem.Controllers
         }
 
         //method for showing the list of registered User
-        public ActionResult Index1()
+        public ActionResult Index1( string Search)
         {
-            var list = db.RegisteredUsers.ToList();
-            return View(list);
+
+            var list = db.RegisteredUsers.Where(register=>register.UserCode.Contains(Search) ||  Search == null);
+            return View(list.ToList());
         }
 
         //General user list
