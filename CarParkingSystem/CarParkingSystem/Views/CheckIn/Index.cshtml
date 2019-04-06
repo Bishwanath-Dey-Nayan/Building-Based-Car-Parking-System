@@ -3,6 +3,18 @@
 @{
     ViewBag.Title = "Index";
 }
+<div class="col-md-4">
+    <p>
+        @{ 
+            using (Html.BeginForm("Index","CheckIn",FormMethod.Get))
+            {
+                 <label>Search By CheckIn Token:</label>
+                 @Html.TextBox("Token")
+                <input type="submit" value="Search" />
+            }
+        }
+    </p>
+</div>
 
 
 <table class="table">

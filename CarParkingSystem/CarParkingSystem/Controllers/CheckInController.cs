@@ -81,10 +81,10 @@ namespace CarParkingSystem.Controllers
         }
 
         //action for showing the current checkin user
-        public ActionResult Index()
+        public ActionResult Index(string Token)
         {
-            
-            return View(db.CheckIns.ToList());
+            var CheckInList = db.CheckIns.Where(checkin => checkin.TokenNo == Token || Token == " ");
+            return View(CheckInList.ToList());
         }
 
 
