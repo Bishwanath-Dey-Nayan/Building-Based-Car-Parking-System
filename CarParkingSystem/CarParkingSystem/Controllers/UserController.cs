@@ -137,10 +137,25 @@ namespace CarParkingSystem.Controllers
                 db.SaveChanges();
                 #endregion
 
+                string UserCode = GeneralUserCode();
+
                 //saving the data to the User Table 
                 //thats refers to the general user of the system
                 #region
-             
+
+                User user = new User()
+                {
+                    Name = gu.Name,
+                    Contact = gu.Contact,
+                    UCode = UserCode,
+                    Address = gu.Address,
+                    CarId=car.Id 
+                };
+                db.Users.Add(user);
+                db.SaveChanges();
+
+                return RedirectToAction();
+
                 #endregion
 
             }
@@ -178,6 +193,24 @@ namespace CarParkingSystem.Controllers
             }
             return code;
         }
+
+
+        //method for creating GeneralUserCode
+        public string GeneralUserCode()
+        {
+            string code = "";
+            var lastUser = db.Users.OrderByDescending(s => s.Id).FirstOrDefault();
+            if (lastUser == null)
+            {
+                code = "GU001";
+            }
+            else
+            {
+                code = "GU00" + ((Convert.ToInt32(lastUser.Id)) + 1).ToString();
+            }
+            return code;
+        }
+
 
         //get method for login 
         public ActionResult Login()
