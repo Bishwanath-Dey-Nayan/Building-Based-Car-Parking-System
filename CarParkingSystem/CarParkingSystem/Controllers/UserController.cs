@@ -119,6 +119,34 @@ namespace CarParkingSystem.Controllers
             return View();
         }
 
+        //post Method
+        [HttpPost]
+        public ActionResult GeneralUserRegistration(GeneralUserVM gu)
+        {
+            if(ModelState.IsValid)
+            {
+                //saving the data to the Car table
+                #region
+                Car car = new Car()
+                {
+                    CarNo=gu.CarNo,
+                    CarName=gu.CarName,
+                    LicenseNo=gu.LicenseNo
+                };
+                db.Cars.Add(car);
+                db.SaveChanges();
+                #endregion
+
+                //saving the data to the User Table 
+                //thats refers to the general user of the system
+                #region
+             
+                #endregion
+
+            }
+            return View();
+        }
+
 
         //method for checking Email Exists or not
         [NonAction]
