@@ -154,7 +154,9 @@ namespace CarParkingSystem.Controllers
                 db.Users.Add(user);
                 db.SaveChanges();
 
-                return RedirectToAction();
+                TempData["GuId"] = user.Id;
+
+                return RedirectToAction("CheckIn","CheckIn");
 
                 #endregion
 

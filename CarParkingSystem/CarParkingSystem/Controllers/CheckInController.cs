@@ -27,38 +27,57 @@ namespace CarParkingSystem.Controllers
 
         public ActionResult CheckInFinal(int? SId)
         {
-            int a= (int)TempData["RUid"];
+            string CheckIn_UserCode = "";
+            int CheckIn_CarId = 0;
 
-            //intantiating an object of RegisteredUser Class
-            var RegisteredUser = db.RegisteredUsers.Where(r => r.Id == a).FirstOrDefault();
-
-            //finding out the selected parking space and changing the status of the space all allocated(False)
-            var ParkingSpace = db.parkingSpace.Where(t => t.Id == SId).FirstOrDefault();
-            ParkingSpace.Status = false;
-            db.SaveChanges();
-            
-
-            //generate token
-            string Token = GetToken();
-
-            //save data to the check in table
-            CheckIn ci = new CheckIn()
+            if (TempData["RUid"] != null)
             {
-                CheckInTime = DateTime.Now,
-                PSpaceId=ParkingSpace.Id,
-                UserCode=RegisteredUser.UserCode,
-                CarId=RegisteredUser.CarId,
-                TokenNo=Token,
-                status=true
-                
-            };
+                int a = (int)TempData["RUid"];
 
-            db.CheckIns.Add(ci);
-            db.SaveChanges();
+                //intantiating an object of RegisteredUser Class
+                var RegisteredUser = db.RegisteredUsers.Where(r => r.Id == a).FirstOrDefault();
+                CheckIn_UserCode = RegisteredUser.UserCode;
+                CheckIn_CarId = RegisteredUser.CarId;
+            }
+            else
+            {
+                int GeneralUserId = Convert.ToInt32(TempData["GuId"]);
+
+                var GeneralUser = db.Users.Where(generaluser => generaluser.Id == GeneralUserId).FirstOrDefault();
+
+                CheckIn_UserCode = GeneralUser.UCode;
+                CheckIn_CarId = GeneralUser.CarId;
+            }
 
 
-            ViewBag.Token = Token;
-            return View();
+                //finding out the selected parking space and changing the status of the space all allocated(False)
+                var ParkingSpace = db.parkingSpace.Where(t => t.Id == SId).FirstOrDefault();
+                ParkingSpace.Status = false;
+                db.SaveChanges();
+
+
+                //generate token
+                string Token = GetToken();
+
+                //save data to the check in table
+                CheckIn ci = new CheckIn()
+                {
+                    CheckInTime = DateTime.Now,
+                    PSpaceId = ParkingSpace.Id,
+                    UserCode = CheckIn_UserCode,
+                    CarId = CheckIn_CarId,
+                    TokenNo = Token,
+                    status = true
+
+                };
+
+                db.CheckIns.Add(ci);
+                db.SaveChanges();
+
+
+                ViewBag.Token = Token;
+                return View();
+       
         }
 
         //action for showing the current checkin user
