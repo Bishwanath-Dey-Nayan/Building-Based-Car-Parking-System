@@ -135,6 +135,7 @@
     <Compile Include="Controllers\CheckInController.cs" />
     <Compile Include="Controllers\CheckOutController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Crypto.cs" />
     <Compile Include="Global.asax.cs">
@@ -223,6 +224,7 @@
     <Content Include="Views\CheckOut\Error.cshtml" />
     <Content Include="Views\User\GeneralUserRegistration.cshtml" />
     <Content Include="Views\User\GeneralUserList.cshtml" />
+    <Content Include="Views\Report\Report.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
