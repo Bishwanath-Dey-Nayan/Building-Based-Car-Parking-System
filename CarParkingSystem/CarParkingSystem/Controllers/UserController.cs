@@ -112,6 +112,9 @@ namespace CarParkingSystem.Controllers
             return View(user);
         }
 
+        //General User Registration Process
+        
+
 
         //method for checking Email Exists or not
         [NonAction]
