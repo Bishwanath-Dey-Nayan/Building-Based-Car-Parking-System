@@ -222,6 +222,7 @@
     <Content Include="Views\CheckOut\ShowBill.cshtml" />
     <Content Include="Views\CheckOut\Error.cshtml" />
     <Content Include="Views\User\GeneralUserRegistration.cshtml" />
+    <Content Include="Views\User\GeneralUserList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

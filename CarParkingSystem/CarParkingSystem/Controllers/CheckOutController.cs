@@ -14,9 +14,23 @@ namespace CarParkingSystem.Controllers
         // GET: CheckOut
         public ActionResult CheckOut(int? id,int?SId,string UsrCode)
         {
+            int CheckOut_CarId = 0;
 
-           var CheckOutUsr = db.RegisteredUsers.Where(t => t.UserCode == UsrCode).FirstOrDefault();
-            var carid = CheckOutUsr.CarId;
+            //Checking wheather the UserCode exists in RegisterUser list or
+            //generalUser list and assigning the value to CheckOut_CarId
+            #region
+            var CheckOutUsr = db.RegisteredUsers.Where(t => t.UserCode == UsrCode).FirstOrDefault();
+            if (CheckOutUsr != null)
+            {
+                CheckOut_CarId = CheckOutUsr.CarId;
+            }
+            else
+            {
+                var UserData = db.Users.Where(userdata => userdata.UCode == UsrCode).FirstOrDefault();
+                CheckOut_CarId = UserData.CarId;
+            }
+            #endregion
+
             //deallocate the parking Space
             var del = db.parkingSpace.Where(t => t.Id == SId).FirstOrDefault();
             del.Status = true;
@@ -27,7 +41,7 @@ namespace CarParkingSystem.Controllers
             {
                 CheckInId = Convert.ToInt32(id),
                 UserCode = UsrCode,
-                CarId = carid,
+                CarId = CheckOut_CarId,
                 CheckOutTime = DateTime.Now
             };
             db.CheckOuts.Add(c);
@@ -47,6 +61,7 @@ namespace CarParkingSystem.Controllers
 
         public ActionResult Bill()
         {
+            int Bill_CarId = 0;
             double Bill = 0;
             int Discount;
             //initializing the CheckOutSearchData with TempData["CheckOutId"] for quering the CheckOut Table Value
@@ -72,7 +87,7 @@ namespace CarParkingSystem.Controllers
             {
                 TotalHour = 1;
             }
-            else if(TotalHour<.4 && TotalHour>.1)
+            else if(TotalHour<.4 && TotalHour>0)
             {
                 TotalHour = .5;
             }
@@ -81,6 +96,7 @@ namespace CarParkingSystem.Controllers
             var UserExists = db.RegisteredUsers.Where(registereduser => registereduser.UserCode == UserSearchData).FirstOrDefault();
             if(UserExists!=null)
             {
+                Bill_CarId = UserExists.CarId;
                 Discount = 10;
                 int UserId = UserExists.Id;
                 //if the user is regitered then we will provide him 10% discount
@@ -95,6 +111,8 @@ namespace CarParkingSystem.Controllers
             }
             else
             {
+                var GeneralUserExists = db.Users.Where(generaluser => generaluser.UCode == UserSearchData).FirstOrDefault();
+                Bill_CarId = GeneralUserExists.CarId;
                 Discount = 0;
                 Bill = (TotalHour * 50);
             }
@@ -106,7 +124,7 @@ namespace CarParkingSystem.Controllers
                 CheckOutId = CheckOutData.Id,
                 //User searchData holds the UserCode
                 UserCode = UserSearchData,
-                CarId = UserExists.CarId,
+                CarId = Bill_CarId,
                 SpaceId = CheckInData.PSpaceId,
                 TotalHour = TotalHour,
                 Total = Bill,

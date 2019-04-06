@@ -279,5 +279,12 @@ namespace CarParkingSystem.Controllers
             var list = db.RegisteredUsers.ToList();
             return View(list);
         }
+
+        //General user list
+        public ActionResult GeneralUserList()
+        {
+            var gulist = db.Users.ToList();
+            return View(gulist);
+        }
     }
 }
