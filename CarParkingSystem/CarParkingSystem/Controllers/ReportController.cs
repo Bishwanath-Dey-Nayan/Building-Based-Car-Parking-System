@@ -1,19 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using CarParkingSystem.Models;
 using System.Web.Mvc;
+
 
 namespace CarParkingSystem.Controllers
 {
+   
     public class ReportController : Controller
     {
-        public ActionResult Report()
+        public ActionResult Report(string SearchBy , int Select)
         {
+            int month = Select;
+
+            if(SearchBy == "Income")
+            {
+                
+            }
             return View();
         }
-        public ActionResult IncomeReport()
+
+        public ActionResult IncomeReport(int month)
         {
+               
             return View();
         }
     }
