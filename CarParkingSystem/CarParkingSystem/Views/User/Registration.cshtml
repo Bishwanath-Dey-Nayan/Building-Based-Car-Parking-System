@@ -4,7 +4,6 @@
     ViewBag.Title = "Registration";
 }
 
-<h2>Registration</h2>
 
 @if (ViewBag.Status != null && Convert.ToBoolean(ViewBag.Status))
 {
@@ -21,8 +20,8 @@ else
     {
         @Html.AntiForgeryToken()
 
-        <div class="form-horizontal">
-            <h4>RegistrationVM</h4>
+        <div class="regForm">
+            <h2>RegistrationVM</h2>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">
@@ -124,7 +123,7 @@ else
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
+                    <input type="submit" value="Register" class="btn btn-default" />
                 </div>
             </div>
         </div>
@@ -140,19 +139,6 @@ else
 
 }
 
-
-
-
-
-
-
-
-
-
-
-<div>
-    @Html.ActionLink("LogIn", "Index")
-</div>
 
 
 

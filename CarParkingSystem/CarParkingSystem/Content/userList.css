@@ -1,0 +1,50 @@
+﻿.userTable{
+    font-size: 13px;
+    margin-top: 5%;
+}
+    .userTable p {
+        text-align: center;
+        margin: 15px 0 30px;
+    }
+    .userTable a {
+        font-size: 17px;
+        color: #00a1ff;
+        text-decoration: none;
+        animation: create 2s infinite;
+    }
+    @keyframes create{
+        0% {
+            color: yellow;
+            text-shadow: 0 0 9px rgba(0, 255, 245, 1);
+        }
+        25% {
+            color: orange;
+            text-shadow: 0 0 9px rgba(0, 255, 245, 1);
+        }
+        50% {
+            color: #00fff5;
+        }
+        75% {
+            color: orange;
+            text-shadow: 0 0 9px rgba(0, 255, 245, 1);
+        }
+        100% {
+            color: yellow;
+            text-shadow: 0 0 9px rgba(0, 255, 245, 1);
+        }
+    }
+    table {
+        margin-bottom: 10%;
+    }
+    .userTable tr th {
+        padding: 0;
+        margin: 0;
+    }
+    .userTable th, .userTable td {
+        padding: 0 15px;
+        color: #23AEFF;
+        border: 1px solid #23AEFF;
+    }
+.userTable td {
+    color: #E2E2E2;
+}

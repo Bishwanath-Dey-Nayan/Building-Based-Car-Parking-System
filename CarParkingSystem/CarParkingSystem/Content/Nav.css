@@ -1,0 +1,129 @@
+﻿body {
+    font-family: Autodestruct BB;
+    color: #E2E2E2;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+p,h1,h3,h4{
+    margin: 0;
+    padding: 0;
+}
+img.body_img{
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    z-index: -1;
+}
+.body {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    color: #E2E2E2;
+    grid-template-columns: 22.75% 77.25%;
+    position: fixed;
+}
+    .body .landing {
+        text-align: center;
+        padding: 15px;
+    }
+    .body .shFloor {
+        text-align: center;
+        padding: 15px;
+    }
+    .body .container{
+        overflow-y:auto;
+        padding: 0 15px;
+    }
+    .body .container footer {
+        text-align: center;
+        width: 100%;
+    }
+        .body .container footer p {
+            padding: 0 0 30px;
+        }
+    .body .nav {
+        padding: 10px 40px;
+    }
+        .body .nav a {
+            text-decoration: none;
+            color: #E2E2E2;
+            position: relative;
+        }
+        .body .nav h2 a::before {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 29px;
+            border-bottom: 2px solid #23AEFF;
+            top: 0;
+            bottom: 0;
+            padding: 0 0 5px 0;
+            transition: .3s;
+        }
+        .body .nav h2 a::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            border-top: 2px solid #23AEFF;
+            top: -5px;
+            bottom: 0;
+            right: 0;
+            padding: 0 0 5px 0;
+            transition: .3s;
+        }
+        .body .nav h2 a:hover::before {
+            width: 100%;
+        }
+        .body .nav h2 a:hover::after {
+            width: 100%;
+        }
+        .body .nav h2 a:hover {
+            color: #23AEFF;
+        }
+        .body .nav footer {
+            position: fixed;
+            bottom: 0;
+            padding: 15px 0;
+        }
+        .body .nav p {
+            margin: 20px 0;
+        }
+
+            .body .nav p a {
+                font-size: 17px;
+                color: #E2E2E2;
+                text-decoration: none;
+                position: relative;
+            }
+                .body .nav p a::before {
+                    content: "";
+                    position: absolute;
+                    width: 0;
+                    height: 19px;
+                    border-bottom: 2px solid #23AEFF;
+                    top: 0;
+                    bottom: 0;
+                    padding: 0 0 5px 0;
+                    transition: .3s;
+                }
+                .body .nav p a::after {
+                    content: "";
+                    position: absolute;
+                    width: 0;
+                    border-top: 2px solid #23AEFF;
+                    top: -5px;
+                    bottom: 0;
+                    right: 0;
+                    padding: 0 0 5px 0;
+                    transition: .3s;
+                }
+                .body .nav p a:hover::before {
+                    width: 100%;
+                }
+                .body .nav p a:hover::after {
+                    width: 100%;
+                }
+                .body .nav p a:hover {
+                    color: #23AEFF;
+                }
