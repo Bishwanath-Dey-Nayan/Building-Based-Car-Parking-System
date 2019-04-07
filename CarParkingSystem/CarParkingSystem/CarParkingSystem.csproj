@@ -212,7 +212,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\User\Registration.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\User\Index1.cshtml" />
@@ -225,6 +224,8 @@
     <Content Include="Views\User\GeneralUserRegistration.cshtml" />
     <Content Include="Views\User\GeneralUserList.cshtml" />
     <Content Include="Views\Report\Report.cshtml" />
+    <Content Include="Views\Shared\_Layoutstart.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
