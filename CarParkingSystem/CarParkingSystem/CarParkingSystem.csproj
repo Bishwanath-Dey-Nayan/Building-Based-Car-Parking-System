@@ -234,6 +234,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="packages.config" />
+    <Content Include="Views\Report\CarReportList.cshtml" />
+    <Content Include="Views\Report\IncomeReport.cshtml" />
+    <Content Include="Views\Report\ReportGenerate.cshtml" />
+    <Content Include="Views\Report\UserReport.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201903170644056_Initial.resx">
