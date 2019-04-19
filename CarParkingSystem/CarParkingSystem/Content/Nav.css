@@ -35,10 +35,12 @@ img.body_img{
         overflow-y:auto;
         padding: 0 15px;
     }
-    .body .container footer {
-        text-align: center;
-        width: 100%;
-    }
+        .body .container footer {
+            position: absolute;
+            text-align: center;
+            bottom: 0;
+            width: 76%;
+        }
         .body .container footer p {
             padding: 0 0 30px;
         }

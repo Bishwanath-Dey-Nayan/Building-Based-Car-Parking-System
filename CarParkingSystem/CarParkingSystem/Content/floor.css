@@ -50,6 +50,58 @@
 .welcome {
     transition: .5s;
 }
+    .welcome .welcomeVanish{
+        display: none;
+    }
+    .welcome .grabImg{
+        display: none;
+    }
+    .grabImg2 {
+        display: none;
+    }
+    .welcome .welcomeAnimation {
+        display: block;
+        animation: animateWelcome 1s ease-in;
+    }
+    @keyframes animateWelcome {
+        from {
+        opacity: 0;
+        transform: translateY(-40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+    .welcome .imgAnimate{
+        animation: animationCar 1s ease-in;
+        display: inline-block;
+    }
+    @keyframes animationCar {
+        from{
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        to{
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    .footerAnimate{
+        animation: animateFooter 1s ease-in;
+        display: inline-block;
+    }
+    @keyframes animateFooter {
+        from{
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to{
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
 .landing h1 {
     margin: 20px 0 0;
     font-size: 55px;
