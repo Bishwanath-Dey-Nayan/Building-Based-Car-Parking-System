@@ -238,6 +238,8 @@
     <Content Include="Views\Report\IncomeReport.cshtml" />
     <Content Include="Views\Report\ReportGenerate.cshtml" />
     <Content Include="Views\Report\UserReport.cshtml" />
+    <Content Include="Views\Shared\_LayoutClient.cshtml" />
+    <Content Include="Views\Home\Profile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201903170644056_Initial.resx">

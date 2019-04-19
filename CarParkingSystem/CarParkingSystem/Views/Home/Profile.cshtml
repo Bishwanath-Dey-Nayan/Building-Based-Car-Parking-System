@@ -1,0 +1,54 @@
+﻿@model CarParkingSystem.Models.RegisteredUser
+@{
+    ViewBag.Title = "Profile";
+}
+
+<h2 style="text-align:center">Profile</h2>
+@* showing the personal info*@
+<div class="container">
+    <div class="col-md-4">
+       Name: @Model.Name <br />
+       UserCode: @Model.UserCode<br />
+       Address: @Model.Address<br />
+       Contact: @Model.Contact<br />
+       Email: @Model.Email<br />
+    </div>
+    @*for showing the Last checkIn time*@
+    <div class="col-md-4">
+        <br />
+     @{ 
+         using (CarParkingSystem.Models.DataBaseContext db = new CarParkingSystem.Models.DataBaseContext())
+         {
+             var checkIns = db.CheckIns.Where(ch => ch.UserCode == Model.UserCode).ToList().OrderByDescending(x => x.CheckInTime).Take(4);
+
+
+             foreach (var item in checkIns)
+             {
+                 @item.CheckInTime<br />
+             }
+         }
+
+     }
+    </div>
+    @* for showing the balace*@
+    <div class="col-md-4">
+        <br />
+        @{ 
+            using (CarParkingSystem.Models.DataBaseContext db = new CarParkingSystem.Models.DataBaseContext())
+            {
+                var balance = db.Accounts.Where(ac => ac.RUId == Model.Id).OrderByDescending(x=> x.Id).First();
+                if (balance.Balance<200)
+                {
+                <label>Balance:</label> <p style="color:red;">@balance.Balance</p>
+                }
+                else
+                {
+                    <label>Balance:</label>
+                    @balance.Balance <span>Taka</span>
+                }
+            }
+        }
+    </div>
+</div>
+
+
