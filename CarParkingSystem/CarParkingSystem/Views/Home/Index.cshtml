@@ -1,4 +1,9 @@
-﻿
+﻿<style>
+    .body .nav {
+        padding: 10px 40px;
+        visibility: hidden;
+    }
+</style>
 
 <div class="landing landingDoor">
     @*Landing Page*@
@@ -14,3 +19,11 @@
         <footer class="grabImg2" >
             <p>&copy; @DateTime.Now.Year - Developed By CODERs</p>
         </footer>
+
+<script>
+    let nav = document.querySelector(".nav");
+
+    setTimeout(() => {
+        nav.classList.add("navAnimation");
+    }, 1250)
+    </script>

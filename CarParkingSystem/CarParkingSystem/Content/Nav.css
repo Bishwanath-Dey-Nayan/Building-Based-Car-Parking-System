@@ -47,6 +47,20 @@ img.body_img{
     .body .nav {
         padding: 10px 40px;
     }
+        .body .nav.navAnimation {
+            visibility: visible;
+            animation: animateNav .7s ease-in;
+        }
+    @keyframes animateNav{
+        from{
+            opacity: 0;
+            transform: translateX(-50px)
+        }
+        to{
+            opacity: 1;
+            transform: translateX(0 )
+        }
+    }
         .body .nav a {
             text-decoration: none;
             color: #E2E2E2;

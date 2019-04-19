@@ -184,6 +184,7 @@
     <Content Include="Content\logLanding.css" />
     <Content Include="Content\Nav.css" />
     <Content Include="Content\reg.css" />
+    <Content Include="Content\Report.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\userList.css" />
     <Content Include="favicon.ico" />

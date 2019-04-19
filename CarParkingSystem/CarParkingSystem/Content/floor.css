@@ -75,7 +75,7 @@
     }
 }
     .welcome .imgAnimate{
-        animation: animationCar 1s ease-in;
+        animation: animationCar .7s ease-in;
         display: inline-block;
     }
     @keyframes animationCar {
@@ -308,7 +308,7 @@
 .shFloor .floor3 .c3 {
     position: absolute;
     bottom: 40%;
-    left: 61%;
+    left: 30.5%;
     transform: rotate(5deg);
 }
 
