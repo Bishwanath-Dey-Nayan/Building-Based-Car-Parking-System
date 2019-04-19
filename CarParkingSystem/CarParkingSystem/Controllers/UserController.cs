@@ -230,6 +230,7 @@ namespace CarParkingSystem.Controllers
                 var l = db.RegisteredUsers.Where(t => t.Email == log.Email).FirstOrDefault();
                 if(l!=null)
                 {
+                    Session["UserId"] = l.Id;
                     if(string.Compare(Crypto.Hash(log.Password),l.Password)==0)
                     {
                         int timeout = log.Remember ? 525600 : 10;
@@ -240,14 +241,16 @@ namespace CarParkingSystem.Controllers
                         cookie.HttpOnly = true;
                         Response.Cookies.Add(cookie);
 
-                        if(Url.IsLocalUrl(ReturnUrl))
+                        if(l.UserType == "A")
                         {
-                            return Redirect(ReturnUrl);
-                        }
-                        else
-                        {
+
                             return RedirectToAction("Index", "Home");
                         }
+                        else if(l.UserType == "U")
+                        {
+                            return RedirectToAction("Profile", "Home");
+                        }
+                        
 
                     }
                     else
@@ -269,6 +272,7 @@ namespace CarParkingSystem.Controllers
         [Authorize]
         public ActionResult Logout()
         {
+            Session["UserId"] = "";
             FormsAuthentication.SignOut();
             return RedirectToAction("Login","User");
         }
