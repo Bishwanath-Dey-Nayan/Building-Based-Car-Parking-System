@@ -5,7 +5,16 @@ let time = document.querySelector(".time");
 let welcomeAnimation = document.querySelector(".welcomeVanish");
 let grabImg = document.querySelector(".grabImg");
 let grabImg2 = document.querySelector(".grabImg2");
+let grabProfile = document.querySelector(".grabProfile");
+let profile = document.querySelector(".profile");
 
+setTimeout(() => {
+    profile.classList.add("grabProfileDetails")
+}, 1700)
+
+setTimeout(() => {
+    grabProfile.classList.add("profileText")
+}, 1700)
 
 setTimeout(() => {
     welcomeAnimation.classList.add("welcomeAnimation")

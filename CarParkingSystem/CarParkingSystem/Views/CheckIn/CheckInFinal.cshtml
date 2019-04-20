@@ -3,16 +3,18 @@
     ViewBag.Title = "CheckIn";
 }
 
-<div class="container col-lg-offset-4" id="PrintArea">
-<h1>City Center Car Parking System</h1>
-  <h3 style="color:red">Token NO: @ViewBag.Token</h3>
+<div class="tokenCard">
+    <div id="PrintArea">
+        <h1 style="color: #eee">City Center Car Parking System</h1>
+        <h3 style="color:red">Token NO: @ViewBag.Token</h3>
+    </div>
+        <button style="align-self:center" class="printBtn">Print</button>
 </div>
-<button style="align-self:center" onclick="printdiv('PrintArea')">Print</button>
-
 
 <script>
-    function printDiv(divName) {
-        var printContents = document.getElementById(divName).innerHTML;
+    let pdiv = document.querySelector(".printBtn")
+    pdiv.addEventListener("click", () => {
+        var printContents = document.getElementById("PrintArea").innerHTML;
         var originalContents = document.body.innerHTML;
 
         document.body.innerHTML = printContents;
@@ -20,6 +22,6 @@
         window.print();
 
         document.body.innerHTML = originalContents;
-    }
+    })
 </script>
 

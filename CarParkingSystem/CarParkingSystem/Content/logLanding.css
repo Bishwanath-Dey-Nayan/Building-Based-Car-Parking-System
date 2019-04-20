@@ -1,4 +1,7 @@
-﻿.lbody {
+﻿body {
+    overflow: hidden;
+}
+.lbody {
     width: 100%;
     height: 100%;
     text-align: center;
@@ -6,6 +9,54 @@
     color: #E2E2E2;
     font-size: 16px;
 }
+.loginShow{
+    width: 100%;
+}
+.loginShow::before {
+    content: "";
+    position: absolute;
+    background: url('../Image/Group 17.png') no-repeat;
+    z-index: 1;
+    width: 100%;
+    background-size: 50%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    animation: animateLogLeft 2s ease-in;
+}
+
+.loginShow::after {
+    content: "";
+    position: absolute;
+    background: url('../Image/Group 16.png') no-repeat;
+    z-index: 1;
+    width: 100%;
+    background-size: 50%;
+    top: 0;
+    bottom: 0;
+    transform:translateY(-.8px);
+    animation: animateLogRight 2s ease-in;
+}
+
+        @keyframes animateLogLeft {
+            0% {
+                left: -800px;
+            }
+
+            100% {
+                left: 0;
+            }
+        }
+
+        @keyframes animateLogRight {
+            0% {
+                right: -1600px;
+            }
+
+            100% {
+                right: -765px;
+            }
+        }
 
     .lbody h1 {
         color: #23AEFF;

@@ -4,84 +4,86 @@
     ViewBag.Title = "UserReport";
 }
 
-<h1 class="text-center text-info">Month Wise User Report</h1><br /><br />
+<div class="userTable"  style="text-align:center;">
+    <h1 class="text-center text-info">Month Wise User Report</h1><br /><br />
 
 
-<h3 class="text-center text-success">Total Entry: @Model.Count()</h3><br />
+    <h3 class="text-center text-success">Total Entry: @Model.Count()</h3><br />
 
-<table class="table">
-    <tr>
-        <th>
-            User Name
-        </th>
-        <th>
-            User Status
-        </th>
-        <th>
-            User Code
-        </th>
-        <th>
-            Car No
-        </th>
-        <th>
-            Check In
-        </th>
-        <th>
-            Check Out time
-        </th>
-    </tr>
+    <table align="center" width="100%" style="text-align: center;">
+        <tr>
+            <th>
+                User Name
+            </th>
+            <th>
+                User Status
+            </th>
+            <th>
+                User Code
+            </th>
+            <th>
+                Car No
+            </th>
+            <th>
+                Check In
+            </th>
+            <th>
+                Check Out time
+            </th>
+        </tr>
 
-@foreach (var item in Model)
-{
-    <tr>
-        <td>
-            @*Finding out the userName*@
-            @{ 
-                string name = "";
-                string ClientStatus = " ";
-                using (CarParkingSystem.Models.DataBaseContext db = new CarParkingSystem.Models.DataBaseContext())
-                {
-                    var Data = db.RegisteredUsers.Where(ru => ru.UserCode == item.UserCode).FirstOrDefault();
-                    if (Data != null)
-                    {
-                        name = Data.Name;
-                        ClientStatus = "Registered";
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @*Finding out the userName*@
+                    @{
+                        string name = "";
+                        string ClientStatus = " ";
+                        using (CarParkingSystem.Models.DataBaseContext db = new CarParkingSystem.Models.DataBaseContext())
+                        {
+                            var Data = db.RegisteredUsers.Where(ru => ru.UserCode == item.UserCode).FirstOrDefault();
+                            if (Data != null)
+                            {
+                                name = Data.Name;
+                                ClientStatus = "Registered";
+                            }
+                            else
+                            {
+                                var Data1 = db.Users.Where(u => u.UCode == item.UserCode).FirstOrDefault();
+                                name = Data1.Name;
+                                ClientStatus = "Not Registered";
+                            }
+
+                        }
                     }
-                    else
-                    {
-                        var Data1 = db.Users.Where(u => u.UCode == item.UserCode).FirstOrDefault();
-                        name = Data1.Name;
-                        ClientStatus = "Not Registered";
+                    @name
+                </td>
+                <td>
+                    @{ if (@ClientStatus == "Not Registered")
+                        {
+                            <p class="text-danger">@ClientStatus</p>
+                        }
+                        else
+                        {
+                            <p class="text-info"> @ClientStatus </p>
+                        }
                     }
+                </td>
+                <td>
+                    @item.UserCode
+                </td>
+                <td>
+                    @item.Car.CarNo
+                </td>
+                <td>
+                    @item.CheckIn.CheckInTime
+                </td>
+                <td>
+                    @item.CheckOutTime
+                </td>
+            </tr>
+        }
 
-                }
-            }
-            @name
-        </td>
-        <td>
-            @{ if (@ClientStatus == "Not Registered")
-                {
-                <p class="text-danger">@ClientStatus</p>
-                }
-                else
-                {
-                   <p class="text-info"> @ClientStatus </p>
-                }
-                }
-        </td>
-        <td>
-            @item.UserCode
-        </td>
-        <td>
-            @item.Car.CarNo
-        </td>
-        <td>
-            @item.CheckIn.CheckInTime
-        </td>
-        <td>
-            @item.CheckOutTime
-        </td>
-    </tr>
-}
-
-</table>
+    </table>
+</div>  

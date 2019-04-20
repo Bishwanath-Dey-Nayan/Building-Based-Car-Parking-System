@@ -9,16 +9,18 @@
 </head>
 <body>
     <div class="lbody">
-        <img src="~/Image/Rectangle 2.png" />
-        <h1 id="greet"></h1>
-        <h1>Please Log-in</h1>
+        <div class="grabLogin">
+            <img src="~/Image/Rectangle 2.png" />
+            <h1 id="greet"></h1>
+            <h1>Please Log-in</h1>
 
-        <div>
-            @RenderBody()
-            <footer>
-                <p>&copy; @DateTime.Now.Year - Developed By CODERs</p>
-            </footer>
-        </div>
+            <div>
+                @RenderBody()
+                <footer>
+                    <p>&copy; @DateTime.Now.Year - Developed By CODERs</p>
+                </footer>
+            </div>
+        </div>  
     </div>
 
     @RenderSection("scripts", required: false)
