@@ -1,9 +1,75 @@
 ﻿.profile {
-    visibility: hidden;
-    width: 70%;
+    visibility: visible;
+    width: 55%;
     margin: auto;
+    text-align:left;
+    margin-bottom: 7%;
     padding: 5px 25px 25px;
     box-shadow: 0 0 15px rgba(6, 67, 236, .6);
+}
+.profileHeader {
+    animation: animateCar 2.5s infinite;
+}
+@keyframes animateCar {
+    0% {
+        color: #0088FF;
+    }
+
+    50% {
+        color: #00FFC2;
+        text-shadow: 0 0 15px rgba(1, 255, 229, .8)
+    }
+
+    100% {
+        color: #0088FF;
+    }
+}
+.landingDoor::before {
+    content: "";
+    position: absolute;
+    background: url('../Image/Group 17.png') no-repeat;
+    background-size: cover;
+    z-index: 1;
+    top: 0;
+    left: -5px;
+    bottom: 0;
+    transition: .5s;
+    animation: animateLeft 6s;
+}
+
+.landingDoor::after {
+    content: "";
+    position: absolute;
+    background: url('../Image/Group 16.png') no-repeat;
+    background-size: cover;
+    z-index: 1;
+    top: 0;
+    right: -5px;
+    bottom: 0;
+    transition: .5s;
+    animation: animateRight 6s;
+}
+
+@keyframes animateLeft {
+    0% {
+        left: 0;
+        width: 50%;
+    }
+
+    100% {
+        left: -150%;
+    }
+}
+
+@keyframes animateRight {
+    0% {
+        right: 0;
+        width: 50%;
+    }
+
+    100% {
+        right: -150%;
+    }
 }
 .grabProfileDetails {
     visibility: visible;
