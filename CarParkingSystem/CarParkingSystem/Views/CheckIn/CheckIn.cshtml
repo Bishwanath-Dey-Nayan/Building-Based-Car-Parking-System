@@ -57,6 +57,7 @@
 
 <ul style="margin: 0">
     @{
+        string[] f = new string[4] { "a", "b", "c", "d" };
         int i = 0;
         foreach (var item in Model)
         {
@@ -64,7 +65,7 @@
             {
                 if (item.Status == true)
                 {
-                    <a href="../../CheckIn/CheckInFinal?SId=@item.Id" class="btn btn-primary">@item.PSName</a>
+                    <a class="@((f[0]+i))" href="../../CheckIn/CheckInFinal?SId=@item.Id" class="btn btn-primary">@item.PSName</a>
                     i++;
                 }
                 else
