@@ -3,19 +3,17 @@
     ViewBag.Title = "Profile";
     Layout = "~/Views/Shared/_LayoutClient.cshtml";
 }
-<style>
-    .body .nav {
-        padding: 10px 40px;
-        visibility: hidden;
-    }
-</style>
+
+
+
 <div class="landingDoor">
-    <h2 style="text-align:center" class="grabProfile">Profile</h2>
+<div class="profileGrab">
+    <h1 style="text-align:center; margin-bottom: 35px; font-size: 30px;" class="profileHeader">Profile | @Html.ActionLink("LogOut", "Logout", "User")</h1>
     @* showing the personal info*@
     <div class="profile">
         <div class="col-md-4">
             <p>Information:</p>  <br />
-            <b style="color:black"> Name: </b>@Model.Name <br />
+            <b> Name: </b>@Model.Name <br />
             <b>UserCode: </b> @Model.UserCode<br />
             <b>Address: </b> @Model.Address<br />
             <b>Contact: </b> @Model.Contact<br />
@@ -23,7 +21,7 @@
         </div>
         @*for showing the Last checkIn time*@
         <div class="log">
-            <p>Log:</p>
+            <p>Check in Log:</p>
             <br />
             @{
                 using (CarParkingSystem.Models.DataBaseContext db = new CarParkingSystem.Models.DataBaseContext())
@@ -60,12 +58,9 @@
             }
         </div>
     </div>
+<footer>
+    <p>&copy; @DateTime.Now.Year - Developed By CODERs</p>
+</footer>
+</div>
 </div>
 
-<script>
-    let nav = document.querySelector(".nav");
-
-    setTimeout(() => {
-        nav.classList.add("navAnimation");
-    }, 1250)
-</script>

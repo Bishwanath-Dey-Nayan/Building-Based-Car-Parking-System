@@ -22,7 +22,7 @@
     top: 0;
     left: 0;
     bottom: 0;
-    animation: animateLogLeft 2s ease-in;
+    animation: animateLogLeft 2.5s;
 }
 
 .loginShow::after {
@@ -35,7 +35,7 @@
     top: 0;
     bottom: 0;
     transform:translateY(-.8px);
-    animation: animateLogRight 2s ease-in;
+    animation: animateLogRight 2.5s;
 }
 
         @keyframes animateLogLeft {
@@ -72,9 +72,9 @@
         z-index: -1;
     }
 
-    .lbody footer {
-        font-size: 14px;
-    }
+.lbody footer {
+    font-size: 14px;
+}
 
 .llogin {
     width: 30%;
