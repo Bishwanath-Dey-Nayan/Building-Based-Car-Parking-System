@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace CarParkingSystem.Controllers
 {
+    [Authorize]
     public class CheckOutController : Controller
     {
         string message = "";
