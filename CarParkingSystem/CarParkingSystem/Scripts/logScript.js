@@ -10,6 +10,12 @@ let AP = timeArr[3];
 let grab = document.querySelector(".grabLogin")
 let loginBtn = document.querySelector(".loginBtn");
 let form = document.querySelector("form");
+let grabProfile = document.querySelector(".profileGrab");
+
+
+setTimeout(() => {
+    grabProfile.classList.add("progileFade")
+}, 1100)
 
 
 loginBtn.addEventListener("click", (e) => {
