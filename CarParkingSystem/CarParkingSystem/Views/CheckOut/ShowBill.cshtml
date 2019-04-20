@@ -3,5 +3,56 @@
 @{
     ViewBag.Title = "Bill";
 }
-@Model.Total
-@Model.TotalHour
+@{
+    string name,address,contact;
+    using (CarParkingSystem.Models.DataBaseContext db = new CarParkingSystem.Models.DataBaseContext())
+    {
+
+        var userData = db.RegisteredUsers.Where(ru => ru.UserCode == Model.UserCode).FirstOrDefault();
+        if (userData != null)
+        {
+            name = userData.Name;
+            address = userData.Address;
+            contact = userData.Contact;
+        }
+        else
+        {
+            var general = db.Users.Where(gu => gu.UCode == Model.UserCode).FirstOrDefault();
+            name = general.Name;
+            address = general.Address;
+            contact = general.Contact;
+        }
+    }
+}
+}
+<div>
+    Name:@name<br />
+    Address:@address<br />
+    Contact:@contact<br />
+    Car:@Model.CarId<br />
+    CheckIn Time:@Model.CheckIn.CheckInTime &nbsp; &nbsp;
+    CheckOutTime:@Model.CheckOut.CheckOutTime<br /><br /><br />
+
+    <table>
+        <tr>
+        <th>Parked Hour</th>
+        <th>Unit</th>
+        <th>Discount</th>
+        <th>Total</th>
+ 
+        </tr>
+        <tr>
+            <td>@Model.TotalHour</td>
+            <td>50</td>
+            <td>@Model.Discount</td>
+            <td>@Model.Total</td>
+
+        </tr>
+ 
+
+
+
+
+    </table>
+    
+</div>
