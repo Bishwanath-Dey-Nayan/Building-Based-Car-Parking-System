@@ -47,7 +47,8 @@
                     var balance = db.Accounts.Where(ac => ac.RUId == Model.Id).OrderByDescending(x => x.Id).First();
                     if (balance.Balance < 200)
                     {
-                        <label>Balance:</label> <p style="color:red;">@balance.Balance</p>
+                        <label style="color: red;">Balance:</label>
+                        @balance.Balance <span>Taka</span>
                     }
                     else
                     {
