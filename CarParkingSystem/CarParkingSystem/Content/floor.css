@@ -75,17 +75,15 @@
     }
 }
     .welcome .imgAnimate{
-        animation: animationCar .7s ease-in;
+        animation: animationCar .9s ease-in;
         display: inline-block;
     }
     @keyframes animationCar {
         from{
             opacity: 0;
-            transform: translateY(50px);
         }
         to{
             opacity: 1;
-            transform: translateY(0);
         }
     }
     .footerAnimate{

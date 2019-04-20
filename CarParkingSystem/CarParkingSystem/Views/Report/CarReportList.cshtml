@@ -3,42 +3,45 @@
 @{
     ViewBag.Title = "CarReportList";
 }
+<div class="userTable" style="text-align:center;">
+    <h2 class="text-center text-info">Month Wise Car Report</h2><br />
 
-<h2 class="text-center text-info">Month Wise Car Report</h2><br />
+    <table class="table" align="center" width="100%" style="text-align: center;">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Car.CarNo)
+            </th>
+            <th>
+                Check In Time
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CheckOutTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserCode)
+            </th>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Car.CarNo)
-        </th>
-        <th>
-            Check In Time
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CheckOutTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UserCode)
-        </th>
-        
-    </tr>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-       
-        <td>
-           <a href="~/Report/CountOfPark_Car?CarId=@item.CarId"> @Html.DisplayFor(modelItem => item.Car.CarNo) </a>
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CheckIn.CheckInTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CheckOutTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserCode)
-        </td>
-    </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
 
-</table>
+                <td>
+                    <a href="~/Report/CountOfPark_Car?CarId=@item.CarId"> @Html.DisplayFor(modelItem => item.Car.CarNo) </a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CheckIn.CheckInTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CheckOutTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserCode)
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>

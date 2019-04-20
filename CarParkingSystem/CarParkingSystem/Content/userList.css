@@ -37,11 +37,12 @@
         margin-bottom: 10%;
     }
     .userTable tr th {
-        padding: 0;
         margin: 0;
+        font-size: 15px;
+        padding: 3px 5px;
     }
     .userTable th, .userTable td {
-        padding: 0 15px;
+        padding: 8px 15px;
         color: #23AEFF;
         border: 1px solid #23AEFF;
     }

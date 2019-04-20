@@ -186,6 +186,7 @@
     <Content Include="Content\reg.css" />
     <Content Include="Content\Report.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\Token.css" />
     <Content Include="Content\userList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

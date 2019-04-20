@@ -4,67 +4,67 @@
     ViewBag.Title = "IncomeReport";
 }
 
-<h2 class="text-center"> <b>Month Wise Income Report </b></h2>
-<br />
+<div class="userTable" style="text-align:center;">
+    <h2 class="text-center"> <b>Month Wise Income Report </b></h2>
+    <br />
 
-@{ 
-    double TotalIncome = 0;
-}
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Car.CarNo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CheckIn.TokenNo)
-        </th>
-        
-        <th>
-            @Html.DisplayNameFor(model => model.Discount) (%)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TotalHour)
-        </th>
-        <th style="text-align:right">
-            @Html.DisplayNameFor(model => model.Total)
-        </th>
-        
-    </tr>
+    @{
+        double TotalIncome = 0;
+    }
+    <table  align="center" width="100%" style="text-align: center;">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Car.CarNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CheckIn.TokenNo)
+            </th>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Car.CarNo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CheckIn.TokenNo)
-        </td>
-       
-        <td>
-            @Html.DisplayFor(modelItem => item.Discount) %
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TotalHour)
-        </td>
-        <td style="text-align:right;">
-            @Html.DisplayFor(modelItem => item.Total)
-        </td>
-        @{ 
-            TotalIncome += item.Total;
+            <th>
+                @Html.DisplayNameFor(model => model.Discount) (%)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalHour)
+            </th>
+            <th >
+                @Html.DisplayNameFor(model => model.Total)
+            </th>
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Car.CarNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CheckIn.TokenNo)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Discount) %
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalHour)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total)
+            </td>
+            @{
+                TotalIncome += item.Total;
+            }
+        </tr>
         }
+        <tr>
+            <td colspan=3>
+                <b> Total Income </b>
+            </td>
+            <td style=" color:green" colspan=2>
+                <b> @TotalIncome </b>
+            </td>
+        </tr>
 
-    </tr>
-}
-    
-</table>
-<table class="table">
-   
-    <tr>
-        <td>
-           <b> Total Income </b>
-        </td>
-        <td style="text-align:right; color:green">
-           <b> @TotalIncome </b>
-        </td>
-    </tr>
-</table>
+    </table>
+
+</div>

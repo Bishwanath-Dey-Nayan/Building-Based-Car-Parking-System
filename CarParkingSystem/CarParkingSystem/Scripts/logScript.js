@@ -6,7 +6,19 @@ let timeArr = store.split(":")
 let greet = document.querySelector("#greet");
 let hour = parseInt(timeArr[0])
 let minuit = parseInt(timeArr[1])
-let AP = timeArr[3]
+let AP = timeArr[3];
+let grab = document.querySelector(".grabLogin")
+let loginBtn = document.querySelector(".loginBtn");
+let form = document.querySelector("form");
+
+
+loginBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    grab.classList.add("loginShow");
+    setTimeout(() => {
+        form.submit();
+    }, 2500)
+})
 
 
 // Conditional Rendaring
