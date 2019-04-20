@@ -1,0 +1,17 @@
+﻿.profile {
+    width: 70%;
+    margin: auto;
+    padding: 5px 25px 25px;
+    box-shadow: 0 0 15px rgba(6, 67, 236, .6);
+}
+    .profile b {
+        color: #23AEFF;
+    }
+    .profile p {
+        font-size: 22px;
+        color: #6188ff;
+        margin: 25px 0 0;
+    }
+    .profile .balance label {
+        color: #00ee00;
+    }
