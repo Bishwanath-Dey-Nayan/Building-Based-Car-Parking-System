@@ -5,93 +5,176 @@
 
 
 @*Floor HTML*@
-<div class="shFloor" style="position: center; padding: 0;">
-    <img style="width: 60%; position: relative;" src="~/Image/Group 9.png" />
-    <div class="floor1">
-        <a class="a1" href="#">A1</a>
-        <a class="a2" href="#">A2</a>
-        <a class="a3" href="#">A3</a>
-        <a class="a4" href="#">A4</a>
-        <a class="a5" href="#">A5</a>
-        <a class="a6" href="#">A6</a>
-        <a class="a7" href="#">A7</a>
-        <a class="a8" href="#">A8</a>
-        <a class="a9" href="#">A9</a>
-    </div>
-    <div class="floor2">
-        <a class="b1" href="#">B1</a>
-        <a class="b2" href="#">B2</a>
-        <a class="b3" href="#">B3</a>
-        <a class="b4" href="#">B4</a>
-        <a class="b5" href="#">B5</a>
-        <a class="b6" href="#">B6</a>
-        <a class="b7" href="#">B7</a>
-        <a class="b8" href="#">B8</a>
-        <a class="b9" href="#">B9</a>
-    </div>
-    <div class="floor3">
-        <a class="c1" href="#">C1</a>
-        <a class="c2" href="#">C2</a>
-        <a class="c3" href="#">C3</a>
-        <a class="c4" href="#">C4</a>
-        <a class="c5" href="#">C5</a>
-        <a class="c6" href="#">C6</a>
-        <a class="c7" href="#">C7</a>
-        <a class="c8" href="#">C8</a>
-        <a class="c9" href="#">C9</a>
-    </div>
-    <div class="floor4">
-        <a class="d1" href="#">D1</a>
-        <a class="d2" href="#">D2</a>
-        <a class="d3" href="#">D3</a>
-        <a class="d4" href="#">D4</a>
-        <a class="d5" href="#">D5</a>
-        <a class="d6" href="#">D6</a>
-        <a class="d7" href="#">D7</a>
-        <a class="d8" href="#">D8</a>
-        <a class="d9" href="#">D9</a>
-    </div>
-</div>
+@*<div class="shFloor" style="position: center; padding: 0;">
+        <img style="width: 60%; position: relative;" src="~/Image/Group 9.png" />
+        <div class="floor1">
+            <a class="a1" href="#">A1</a>
+            <a class="a2" href="#">A2</a>
+            <a class="a3" href="#">A3</a>
+            <a class="a4" href="#">A4</a>
+            <a class="a5" href="#">A5</a>
+            <a class="a6" href="#">A6</a>
+            <a class="a7" href="#">A7</a>
+            <a class="a8" href="#">A8</a>
+            <a class="a9" href="#">A9</a>
+        </div>
+        <div class="floor2">
+            <a class="b1" href="#">B1</a>
+            <a class="b2" href="#">B2</a>
+            <a class="b3" href="#">B3</a>
+            <a class="b4" href="#">B4</a>
+            <a class="b5" href="#">B5</a>
+            <a class="b6" href="#">B6</a>
+            <a class="b7" href="#">B7</a>
+            <a class="b8" href="#">B8</a>
+            <a class="b9" href="#">B9</a>
+        </div>
+        <div class="floor3">
+            <a class="c1" href="#">C1</a>
+            <a class="c2" href="#">C2</a>
+            <a class="c3" href="#">C3</a>
+            <a class="c4" href="#">C4</a>
+            <a class="c5" href="#">C5</a>
+            <a class="c6" href="#">C6</a>
+            <a class="c7" href="#">C7</a>
+            <a class="c8" href="#">C8</a>
+            <a class="c9" href="#">C9</a>
+        </div>
+        <div class="floor4">
+            <a class="d1" href="#">D1</a>
+            <a class="d2" href="#">D2</a>
+            <a class="d3" href="#">D3</a>
+            <a class="d4" href="#">D4</a>
+            <a class="d5" href="#">D5</a>
+            <a class="d6" href="#">D6</a>
+            <a class="d7" href="#">D7</a>
+            <a class="d8" href="#">D8</a>
+            <a class="d9" href="#">D9</a>
+        </div>
+    </div>*@
 
 
-
-<ul style="margin: 0">
     @{
-        string[] f = new string[4] { "a", "b", "c", "d" };
         int i = 0;
+
+        int[] fn = new int[4] { 1, 2, 3, 4 };
+        int fc = 0;
+        string[] s = new string[4] { "a", "b", "c", "d" };
+        int sc = 0;
         foreach (var item in Model)
         {
-            if (i < 9)
-            {
+            
+                if (i < 9)
+                {
                 if (item.Status == true)
                 {
-                    <a class="@((f[0]+i))" href="../../CheckIn/CheckInFinal?SId=@item.Id" class="btn btn-primary">@item.PSName</a>
-                    i++;
+                <a class="@((s[sc] + Convert.ToInt32(i + 1)))" href="../../CheckIn/CheckInFinal?SId=@item.Id" class="btn btn-primary">@item.PSName</a>
+                i++;
                 }
                 else
                 {
-                    <a href="#" class="btn btn-danger">@item.PSName</a>
-                    i++;
+                <a class="@((s[sc] + Convert.ToInt32(i + 1)))" href="#" class="btn btn-danger">@item.PSName</a>
+                i++;
                 }
-            }
-            else
-            {
-                if (item.Status == true)
-                {
-                    <br />
-                    <a href="../../CheckIn/CheckInFinal?SId=@item.Id" class="btn btn-primary">@item.PSName</a>
-                    i = 1;
                 }
                 else
                 {
-                    <br />
-                    <a href="#" class="btn btn-danger">@item.PSName</a>
-                    i = 1;
+                if (item.Status == true)
+                {
+                <br />
+                <a class="@((s[sc] + Convert.ToInt32(i + 1)))" href="../../CheckIn/CheckInFinal?SId=@item.Id" class="btn btn-primary">@item.PSName</a>
+                i = 1;
+                    fc++;
+                    sc++;
+         
                 }
-            }
+                else
+                {
+                <br />
+                <a class="@((s[sc] + Convert.ToInt32(i + 1)))" href="#" class="btn btn-danger">@item.PSName</a>
+                i = 1;
+                    fc++;
+                    sc++;
+                        
+                }
+                }
+                
+                }
 
-        }
-    }
-</ul>
+                }
+        
+
+
+
+   
+
+
+
+
+
+
+
+ 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    @*<ul style="margin: 0">
+            @{
+                int i = 0;
+                foreach (var item in Model)
+                {
+                    if (i < 9)
+                    {
+                        if (item.Status == true)
+                        {
+                            <a href="../../CheckIn/CheckInFinal?SId=@item.Id" class="btn btn-primary">@item.PSName</a>
+                            i++;
+                        }
+                        else
+                        {
+                            <a href="#" class="btn btn-danger">@item.PSName</a>
+                            i++;
+                        }
+                    }
+                    else
+                    {
+                        if (item.Status == true)
+                        {
+                            <br />
+                            <a href="../../CheckIn/CheckInFinal?SId=@item.Id" class="btn btn-primary">@item.PSName</a>
+                            i = 1;
+                        }
+                        else
+                        {
+                            <br />
+                            <a href="#" class="btn btn-danger">@item.PSName</a>
+                            i = 1;
+                        }
+                    }
+
+                }
+            }
+        </ul>*@
 
 
