@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace CarParkingSystem.Controllers
 {
+    [Authorize]
     public class CheckInController : Controller
     {
         private DataBaseContext db=new DataBaseContext();
