@@ -1,8 +1,13 @@
 ﻿.profile {
+    visibility: hidden;
     width: 70%;
     margin: auto;
     padding: 5px 25px 25px;
     box-shadow: 0 0 15px rgba(6, 67, 236, .6);
+}
+.grabProfileDetails {
+    visibility: visible;
+    animation: profileAnimate 1s ease-in;
 }
     .profile b {
         color: #23AEFF;
@@ -14,4 +19,29 @@
     }
     .profile .balance label {
         color: #00ee00;
+    }
+    .grabProfile{
+        visibility: hidden;
+    }
+    .profileText{
+        visibility: visible;
+        animation: profileTextanimate .6s ease-in;
+    }
+    @keyframes profileTextanimate{
+        from{
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to{
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    @keyframes profileAnimate{
+        from{
+            opacity: 0;
+        }
+        to{
+            opacity: 1;
+        }
     }

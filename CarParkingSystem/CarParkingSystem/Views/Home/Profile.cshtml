@@ -2,56 +2,69 @@
 @{
     ViewBag.Title = "Profile";
 }
-
-<h2 style="text-align:center">Profile</h2>
-@* showing the personal info*@
-<div class="profile">
-    <div class="col-md-4">
-        <p>Information:</p>  <br />
-        <b> Name: </b>@Model.Name <br />
-        <b>UserCode: </b> @Model.UserCode<br />
-        <b>Address: </b> @Model.Address<br />
-        <b>Contact: </b> @Model.Contact<br />
-        <b>Email: </b> @Model.Email<br />
-    </div>
-    @*for showing the Last checkIn time*@
-    <div class="log">
-        <p>Log:</p>
-        <br />
-     @{ 
-         using (CarParkingSystem.Models.DataBaseContext db = new CarParkingSystem.Models.DataBaseContext())
-         {
-             var checkIns = db.CheckIns.Where(ch => ch.UserCode == Model.UserCode).ToList().OrderByDescending(x => x.CheckInTime).Take(4);
-
-
-             foreach (var item in checkIns)
-             {
-                 @item.CheckInTime<br />
-             }
-         }
-
-     }
-    </div>
-    @* for showing the balace*@
-    <div class="balance">
-        <p>Balance: </p>
-        <br />
-        @{ 
-            using (CarParkingSystem.Models.DataBaseContext db = new CarParkingSystem.Models.DataBaseContext())
-            {
-                var balance = db.Accounts.Where(ac => ac.RUId == Model.Id).OrderByDescending(x=> x.Id).First();
-                if (balance.Balance<200)
+<style>
+    .body .nav {
+        padding: 10px 40px;
+        visibility: hidden;
+    }
+</style>
+<div class="landingDoor">
+    <h2 style="text-align:center" class="grabProfile">Profile</h2>
+    @* showing the personal info*@
+    <div class="profile">
+        <div class="col-md-4">
+            <p>Information:</p>  <br />
+            <b> Name: </b>@Model.Name <br />
+            <b>UserCode: </b> @Model.UserCode<br />
+            <b>Address: </b> @Model.Address<br />
+            <b>Contact: </b> @Model.Contact<br />
+            <b>Email: </b> @Model.Email<br />
+        </div>
+        @*for showing the Last checkIn time*@
+        <div class="log">
+            <p>Log:</p>
+            <br />
+            @{
+                using (CarParkingSystem.Models.DataBaseContext db = new CarParkingSystem.Models.DataBaseContext())
                 {
-                <label>Balance:</label> <p style="color:red;">@balance.Balance</p>
+                    var checkIns = db.CheckIns.Where(ch => ch.UserCode == Model.UserCode).ToList().OrderByDescending(x => x.CheckInTime).Take(4);
+
+
+                    foreach (var item in checkIns)
+                    {
+                        @item.CheckInTime<br />
+                    }
                 }
-                else
+
+            }
+        </div>
+        @* for showing the balace*@
+        <div class="balance">
+            <p>Balance: </p>
+            <br />
+            @{
+                using (CarParkingSystem.Models.DataBaseContext db = new CarParkingSystem.Models.DataBaseContext())
                 {
-                    <label>Balance:</label>
-                    @balance.Balance <span>Taka</span>
+                    var balance = db.Accounts.Where(ac => ac.RUId == Model.Id).OrderByDescending(x => x.Id).First();
+                    if (balance.Balance < 200)
+                    {
+                        <label>Balance:</label> <p style="color:red;">@balance.Balance</p>
+                    }
+                    else
+                    {
+                        <label>Balance:</label>
+                        @balance.Balance <span>Taka</span>
+                    }
                 }
             }
-        }
+        </div>
     </div>
 </div>
 
+<script>
+    let nav = document.querySelector(".nav");
 
+    setTimeout(() => {
+        nav.classList.add("navAnimation");
+    }, 1250)
+</script>
