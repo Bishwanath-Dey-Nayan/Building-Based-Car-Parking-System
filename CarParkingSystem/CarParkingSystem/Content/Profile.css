@@ -10,6 +10,11 @@
 .profileHeader {
     animation: animateCar 2.5s infinite;
 }
+    .profileHeader a {
+        text-decoration: none;
+        color: #00FFC2;
+        animation: animateCar 2.5s infinite;
+    }
 @keyframes animateCar {
     0% {
         color: #0088FF;

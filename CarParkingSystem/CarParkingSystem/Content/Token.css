@@ -1,4 +1,23 @@
 ﻿.tokenCard {
     width: 100%;
+    padding: 25px 0;
     text-align: center;
 }
+    .tokenCard button {
+        font-family: Autodestruct BB;
+        padding: 10px 15px;
+        margin: 10px 0;
+        width: 16%;
+        height: 40px;
+        border: #0088FF 2px solid;
+        background: #0e1e53;
+        border-radius: 10px;
+        color: #E2E2E2;
+        font-size: 15px;
+    }
+        .tokenCard button:hover {
+            background: #0088FF;
+            border: #00ffd9 2px solid;
+            transition: .5s;
+            color: #8eff9d;
+        }
