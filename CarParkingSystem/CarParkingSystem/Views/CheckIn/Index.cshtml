@@ -3,67 +3,69 @@
 @{
     ViewBag.Title = "Index";
 }
-<div class="col-md-4">
-    <p>
-        @{ 
-            using (Html.BeginForm("Index","CheckIn",FormMethod.Get))
+<div class="userTable">
+    <div class="info" style="margin: 35px 0"><h1 align="center">Occupied User List</h1></div>
+    <div class="regForm">
+        @{
+            using (Html.BeginForm("Index", "CheckIn", FormMethod.Get))
             {
-                 <label>Search By CheckIn Token:</label>
-                 @Html.TextBox("Token")
+                <label style="font-size: 16px">Search By CheckIn Token</label>
+                @Html.TextBox("Token")
                 <input type="submit" value="Search" />
             }
         }
-    </p>
+    </div>
+
+
+
+    <table align="center" width="100%;" style="text-align: center;">
+        <tr>
+            <th>
+                Token No
+            </th>
+            <th>
+                CheckIn Time
+            </th>
+            <th>
+                Space Name
+            </th>
+            <th>
+                Car No
+            </th>
+            <th>
+                User Code
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            if (item.status == true)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TokenNo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CheckInTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ParkingSpace.PSName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Car.CarNo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserCode)
+                    </td>
+                    <td>
+                        <a href="../../CheckOut/CheckOut?id=@item.Id&SId=@item.PSpaceId&UsrCode=@item.UserCode" class="btn btn-primary">Check Out</a>
+                    </td>
+                </tr>
+            }
+        }
+
+    </table>
 </div>
-
-
-<table class="table">
-    <tr>
-        <th>
-            Token No
-        </th>
-        <th>
-            CheckIn Time
-        </th>
-        <th>
-            Space Name
-        </th>
-        <th>
-            Car No
-        </th>
-        <th>
-            User Code
-        </th>
-        <th>
-            Action
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    if (item.status == true)
-    {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TokenNo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CheckInTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ParkingSpace.PSName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Car.CarNo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserCode)
-        </td>
-        <td>
-           <a href="../../CheckOut/CheckOut?id=@item.Id&SId=@item.PSpaceId&UsrCode=@item.UserCode" class="btn btn-primary">Check Out</a>
-        </td>
-    </tr>
-    }
-}
-
-</table>

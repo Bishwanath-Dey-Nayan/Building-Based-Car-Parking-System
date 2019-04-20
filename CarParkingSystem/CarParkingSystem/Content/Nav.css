@@ -35,15 +35,31 @@ img.body_img{
         overflow-y:auto;
         padding: 0 15px;
     }
-    .body .container footer {
-        text-align: center;
-        width: 100%;
-    }
+        .body .container footer {
+            position: absolute;
+            text-align: center;
+            bottom: 0;
+            width: 76%;
+        }
         .body .container footer p {
             padding: 0 0 30px;
         }
     .body .nav {
         padding: 10px 40px;
+    }
+        .body .nav.navAnimation {
+            visibility: visible;
+            animation: animateNav .7s ease-in;
+        }
+    @keyframes animateNav{
+        from{
+            opacity: 0;
+            transform: translateX(-50px)
+        }
+        to{
+            opacity: 1;
+            transform: translateX(0 )
+        }
     }
         .body .nav a {
             text-decoration: none;

@@ -9,6 +9,7 @@
     <link href="~/Content/body.css" rel="stylesheet" />
     <link href="~/Content/reg.css" rel="stylesheet" />
     <link href="~/Content/userList.css" rel="stylesheet" />
+    <link href="~/Content/Report.css" rel="stylesheet" />
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
@@ -17,12 +18,11 @@
         <div class="nav">
             <h2><a href="/">CODERs</a></h2>
             <hr />  
-            <p>@Html.ActionLink("Registered User", "Index1", "User")</p>
-            <p>@Html.ActionLink("Checked In", "Index", "CheckIn")</p>
-            <p>@Html.ActionLink("General Check In", "GeneralUserRegistration", "User")</p>
             <p>@Html.ActionLink("Report", "Report", "Report")</p>
+            <p>@Html.ActionLink("Checked In", "Index", "CheckIn")</p>
             <p>@Html.ActionLink("Registration", "Registration", "User")</p>
-            <p>@Html.ActionLink("Report","Report","Report")</p>
+            <p>@Html.ActionLink("Registered User", "Index1", "User")</p>
+            <p>@Html.ActionLink("General Check In", "GeneralUserRegistration", "User")</p>
 
             <footer>
                 <p>@Html.ActionLink("LogOut", "Logout", "User")</p>
@@ -30,9 +30,6 @@
         </div>
         <div class="container">
             @RenderBody()
-            <footer>
-                <p>&copy; @DateTime.Now.Year - Developed By CODERs</p>
-            </footer>
         </div>
     </div>
     @RenderSection("scripts", required: false)

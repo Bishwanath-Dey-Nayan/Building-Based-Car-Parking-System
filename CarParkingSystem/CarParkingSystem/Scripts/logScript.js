@@ -22,7 +22,7 @@ if (hour <= 12 && AP === "PM") {
     console.log("Good Evening Admin")
     greet.innerHTML = "Good Evening Admin"
 }
-if (hour < 12 && AP === "AM") {
-    console.log("Good Night Admin")
+if (hour < 12 && hour < 5 && AP === "AM") {
+    console.log("Good Night Admin" + hour)
     greet.innerHTML = "Good Night Admin"
 }
