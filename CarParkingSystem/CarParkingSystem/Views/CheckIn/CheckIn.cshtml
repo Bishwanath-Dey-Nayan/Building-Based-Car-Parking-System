@@ -53,10 +53,56 @@
         </div>
     </div>*@
 
-@*<div class="@(("floor"+j).ToString())">
-class="@((s[t] + Convert.ToInt32(i + 1)))"
-*@
-      
+
+    @{
+        int i = 0;
+
+        int[] fn = new int[4] { 1, 2, 3, 4 };
+        int fc = 0;
+        string[] s = new string[4] { "a", "b", "c", "d" };
+        int sc = 0;
+        foreach (var item in Model)
+        {
+            
+                if (i < 9)
+                {
+                if (item.Status == true)
+                {
+                <a class="@((s[sc] + Convert.ToInt32(i + 1)))" href="../../CheckIn/CheckInFinal?SId=@item.Id" class="btn btn-primary">@item.PSName</a>
+                i++;
+                }
+                else
+                {
+                <a class="@((s[sc] + Convert.ToInt32(i + 1)))" href="#" class="btn btn-danger">@item.PSName</a>
+                i++;
+                }
+                }
+                else
+                {
+                if (item.Status == true)
+                {
+                <br />
+                <a class="@((s[sc] + Convert.ToInt32(i + 1)))" href="../../CheckIn/CheckInFinal?SId=@item.Id" class="btn btn-primary">@item.PSName</a>
+                i = 1;
+                    fc++;
+                    sc++;
+         
+                }
+                else
+                {
+                <br />
+                <a class="@((s[sc] + Convert.ToInt32(i + 1)))" href="#" class="btn btn-danger">@item.PSName</a>
+                i = 1;
+                    fc++;
+                    sc++;
+                        
+                }
+                }
+                
+                }
+
+                }
+        
 
 
 
@@ -68,7 +114,32 @@ class="@((s[t] + Convert.ToInt32(i + 1)))"
 
 
 
- @*<ul style="margin: 0">
+ 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    @*<ul style="margin: 0">
             @{
                 int i = 0;
                 foreach (var item in Model)
