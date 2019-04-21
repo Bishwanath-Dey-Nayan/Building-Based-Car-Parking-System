@@ -5,7 +5,7 @@ using System.Web.Mvc;
 
 namespace CarParkingSystem.Controllers
 {
-   
+   [Authorize]
     public class ReportController : Controller
     {
         private DataBaseContext db = new DataBaseContext();

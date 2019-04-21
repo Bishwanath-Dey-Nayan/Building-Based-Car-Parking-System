@@ -57,6 +57,7 @@ namespace CarParkingSystem.Models.ViewModel
 
 
         [Display(Name="Confirm PassWord.")]
+        [DataType(DataType.Password)]
         [Required(AllowEmptyStrings =false,ErrorMessage ="Confirm Password Required.")]
         [Compare("Password",ErrorMessage ="Confirm Password does not match with the Password.")]
         public string ConfirmPassWord { get; set; }

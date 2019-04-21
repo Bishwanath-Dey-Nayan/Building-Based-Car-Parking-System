@@ -9,10 +9,12 @@ using System.Web.Security;
 
 namespace CarParkingSystem.Controllers
 {
+
     public class UserController : Controller
     {
         private DataBaseContext db = new DataBaseContext();
         // GET: Registration
+        [Authorize]
         public ActionResult Registration()
         {
             return View();
@@ -20,6 +22,7 @@ namespace CarParkingSystem.Controllers
 
 
         //Post:Registration
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
 
@@ -87,7 +90,8 @@ namespace CarParkingSystem.Controllers
                     Account ac = new Account() {
                         RUId = ru.Id,
                         DepositeTime = DateTime.Now.Date,
-                        DepositedAmount=user.Deposite
+                        DepositedAmount=user.Deposite,
+                        Balance = user.Deposite
 
                     };
                     db.Accounts.Add(ac);
@@ -121,6 +125,7 @@ namespace CarParkingSystem.Controllers
 
         //post Method
         [HttpPost]
+        [Authorize]
         public ActionResult GeneralUserRegistration(GeneralUserVM gu)
         {
             if(ModelState.IsValid)
@@ -278,6 +283,7 @@ namespace CarParkingSystem.Controllers
         }
 
         //method for showing the list of registered User
+        [Authorize]
         public ActionResult Index1( string Search)
         {
 
@@ -286,6 +292,7 @@ namespace CarParkingSystem.Controllers
         }
 
         //General user list
+        [Authorize]
         public ActionResult GeneralUserList()
         {
             var gulist = db.Users.ToList();
