@@ -25,34 +25,50 @@
     }
 }
 }
-<div>
-    Name:@name<br />
-    Address:@address<br />
-    Contact:@contact<br />
-    Car:@Model.CarId<br />
-    CheckIn Time:@Model.CheckIn.CheckInTime &nbsp; &nbsp;
-    CheckOutTime:@Model.CheckOut.CheckOutTime<br /><br /><br />
+<div style="text-align:center" class="billContainer">
+    <div class="showbill" id="PrintArea" style="margin-top: 45px; text-align: left;">
 
-    <table>
-        <tr>
-        <th>Parked Hour</th>
-        <th>Unit</th>
-        <th>Discount</th>
-        <th>Total</th>
- 
-        </tr>
-        <tr>
-            <td>@Model.TotalHour</td>
-            <td>50</td>
-            <td>@Model.Discount</td>
-            <td>@Model.Total</td>
+        <h1 style="text-align: center; margin: 35px 0; color: #23AEFF;">Invoice</h1>
 
-        </tr>
- 
+        <b style="color: #23AEFF; margin: 15px 0;">Name: </b> @name<br />
+        <b style="color: #23AEFF;">Car: </b> No Of Car:   @Model.CarId<br />
+        <b style="color: #23AEFF;">Contact: </b> @contact<br />
+        <b style="color: #23AEFF;">Address: </b> @address<br />
+        <b style="color: #23AEFF;">CheckIn Time: </b> @Model.CheckIn.CheckInTime <br />
+        <b style="color: #23AEFF;">CheckOutTime: </b> @Model.CheckOut.CheckOutTime<br />
 
+        <div class="userTable">
+            <table width="100%" align="center" style="text-align: center;">
+                <tr>
+                    <th>Parked Hour</th>
+                    <th>Unit</th>
+                    <th>Discount</th>
+                    <th>Total</th>
 
+                </tr>
+                <tr>
+                    <td>@Model.TotalHour</td>
+                    <td>50</td>
+                    <td>@Model.Discount</td>
+                    <td>@Model.Total</td>
 
+                </tr>
+            </table>
+        </div>
+    </div>
+    <button class="printBtn">Print</button>
 
-    </table>
-    
 </div>
+<script>
+    let pdiv = document.querySelector(".printBtn")
+    pdiv.addEventListener("click", () => {
+        var printContents = document.getElementById("PrintArea").innerHTML;
+        var originalContents = document.body.innerHTML;
+
+        document.body.innerHTML = printContents;
+
+        window.print();
+
+        document.body.innerHTML = originalContents;
+    })
+</script>
